@@ -85,7 +85,10 @@ div .autoMart-logo {
     margin-right: 1em;
 }
 
-.signup-form .form-field input{
+.signup-form .form-field input[type="text"],
+input[type="phone no"],
+input[type="email"], 
+input[type="password"] {
     padding: 8px;
     border-radius: 2px;
     width: 300px;
