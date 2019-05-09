@@ -1,0 +1,128 @@
+/**
+* Global elements
+**/
+
+body,html {
+    background: #FFFFFF;
+    height: 100%;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    hr {
+        margin: -2em;
+    }
+    
+    div .autoMart-logo {
+        margin: -2em 0 0 5em;
+    }
+
+    .autoMart-nav__list {
+        list-style-type: none;
+        font-size: 1.1em;
+        display: flex;
+        justify-content: flex-end;
+        margin: -9em 3em 0 0;
+        text-transform: uppercase;
+    }
+    
+    .autoMart-nav__list a {
+        text-decoration: none;
+        color: #000000;
+    }
+    
+    .autoMart-nav__list a:hover, .autoMart-nav__list a:active {
+        border-bottom: 5px solid #e3b51e;
+        padding-bottom: 0.62em;
+    }
+    
+    .autoMart-nav__item {
+        margin: 2.5em;
+    }
+    
+    .autoMart-nav__item:last-of-type {
+        border: 1px solid #000000;
+        background: #000000;
+        color: #FFFFFF;
+        padding: 10px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        width: 70px;
+        height: 15px;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    .autoMart-nav__item:last-of-type a{
+        color: #FFFFFF;
+    }
+    
+    .form {
+        border: 4px solid #e3b51e;
+        border-top-right-radius: 100px;
+        border-bottom-left-radius: 100px;
+        margin: -3em auto;
+        width: 55%;
+        text-align: center;
+    }
+    
+    .form .form-field {
+        font-size: 1em;
+        font-weight: bold;
+        margin: 1em;
+    }
+    
+    .form .form-field label {
+        margin-right: 1em;
+    }
+    
+    .form .form-field input[type="text"],
+    input[type="phone no"],
+    input[type="email"], 
+    input[type="password"] {
+        padding: 8px;
+        border-radius: 2px;
+        width: 300px;
+    }
+    
+    .form .form-field .btn-form {
+        border-radius: 20px;
+        width: 120px;
+        height: 40px;
+        border: 1px solid #e3b51e;
+        background: #000000;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 1em;
+    }
+    
+    .form .form-field input::placeholder {
+        padding: 5px;
+    }
+    
+    .form p {
+        font-size: 1.2em;
+        font-style: italic;
+    }
+    
+    .footer-blob1 {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: #e3b51e;
+        left:40px;
+        top: 75%;
+    }
+    
+    .footer-blob2 {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #e3b51e;
+        left:115px;
+        top: 65%;
+    }
