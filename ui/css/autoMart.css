@@ -2,7 +2,7 @@
 * Global elements
 **/
 
-body {
+body,html {
     background: #FFFFFF;
     height: 100%;
     }
@@ -18,11 +18,7 @@ body {
     div .autoMart-logo {
         margin: -2em 0 0 5em;
     }
-    
-    .autoMart-nav {
-        
-    }
-    
+
     .autoMart-nav__list {
         list-style-type: none;
         font-size: 1.1em;
@@ -67,8 +63,7 @@ body {
         border: 4px solid #e3b51e;
         border-top-right-radius: 100px;
         border-bottom-left-radius: 100px;
-        height: 500px;
-        margin: -2em auto;
+        margin: -3em auto;
         width: 55%;
         text-align: center;
     }
@@ -83,7 +78,7 @@ body {
         margin-right: 1em;
     }
     
-    .signup-form .form-field input[type="text"],
+    .form .form-field input[type="text"],
     input[type="phone no"],
     input[type="email"], 
     input[type="password"] {
