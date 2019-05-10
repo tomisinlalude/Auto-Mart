@@ -1,3 +1,4 @@
+
 h1 {
   margin-top: 1em;
   font-size: 60px;
@@ -83,7 +84,7 @@ h1 {
     border-radius: 50px;
     width: 200px;
     height: 60px;
-    border: 1px solid #ce7c80;
+    border: 1px solid #CE7C80;
     background: #CE7C80;
     color: 000000;
     font-weight: bold;

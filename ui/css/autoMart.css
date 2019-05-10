@@ -62,7 +62,7 @@ body,html {
     }
     
     .form {
-        border: 4px solid #ce7c80;
+        border: 4px solid #CE7C80;
         border-top-right-radius: 100px;
         border-bottom-left-radius: 100px;
         margin: -3em auto;
@@ -114,7 +114,7 @@ body,html {
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        background: #ce7c80;
+        background: #CE7C80;
         left:40px;
         top: 75%;
     }
@@ -124,7 +124,7 @@ body,html {
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        background: #ce7c80;
+        background: #CE7C80;
         left:115px;
         top: 65%;
     }
