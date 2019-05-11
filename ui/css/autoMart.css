@@ -36,7 +36,7 @@ body,html {
     }
     
     .autoMart-nav__list a:hover, .autoMart-nav__list a:active {
-        border-bottom: 5px solid #e3b51e;
+        border-bottom: 5px solid #CE7C80;
         padding-bottom: 0.62em;
     }
     
@@ -57,7 +57,7 @@ body,html {
         font-weight: bold;
     }
     
-    .autoMart-nav__item:last-of-type a{
+    .autoMart-nav__item:last-of-type a {
         color: #FFFFFF;
     }
     
@@ -93,7 +93,7 @@ body,html {
         border-radius: 20px;
         width: 120px;
         height: 40px;
-        border: 1px solid #e3b51e;
+        border: 1px solid #CE7C80;
         background: #000000;
         color: #FFFFFF;
         font-weight: bold;
