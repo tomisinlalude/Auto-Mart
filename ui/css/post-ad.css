@@ -1,0 +1,14 @@
+.post-ad__form {
+    height: 400px;
+    margin-top: 1.5em;
+}
+
+.post-ad__form h2 {
+    margin-bottom: 1em;
+    letter-spacing: 0.1em;
+}
+
+.post-ad__form input [type="file"] {
+    border: 1px solid #000000;
+    border-radius: 2px;
+}

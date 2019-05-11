@@ -1,0 +1,56 @@
+
+.btn-form {
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #CE7C80;
+    background: #000000;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+.btn-form a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.card {
+    width: 380px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    max-width: 35%;
+    border: 2px solid #CE7C80;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1em;
+  }
+
+.card img {
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+}
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card-container {
+    padding: 2px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em auto;
+  }
+
+.ad-list__btn {
+  margin-left: 1.5em;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+
