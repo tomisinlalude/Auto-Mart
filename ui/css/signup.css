@@ -1,8 +1,50 @@
 .signup-form {
-    height: 550px;
+    height: 480px;
+    background: rgb(252, 247, 247);
 }
 
 .signup-form h1 {
-    margin-bottom: 1.5em;
+    margin: 1em 0 1.5em 0;
     letter-spacing: 0.1em;
+}
+
+.signup-form p {
+    font-size: 1.1em;
+}
+
+.signup-form p a {
+    text-decoration: none;
+    color: blue;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .form {
+        margin: 0 !important;
+    }
+
+    .form .form-field input {
+        width: 250px !important;
+    }
+
+    .signup-form {
+        background: transparent;
+    }
+
+    .signup-form h1 {
+        margin: 0;
+        letter-spacing: 0;
+        font-size: 16px;
+    }
+
+    .form .form-field {
+        padding: 0 !important;
+    }
+
+    .form .form-field .btn-form {
+        width: 260px !important;
+    }
+
+    .signup-form p {
+        margin-left: 4em !important;
+    }
 }
