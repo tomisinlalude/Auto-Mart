@@ -1,13 +1,50 @@
-.signin-form {
-    height: 400px !important;
+.signup-form {
+    height: 480px;
+    background: rgb(252, 247, 247);
 }
 
-.signin-form h1 {
-    margin-bottom: 1em;
+.signup-form h1 {
+    margin: 1em 0 1.5em 0;
     letter-spacing: 0.1em;
 }
 
-.signin-form .password-reset {
-    text-decoration: none;
+.signup-form p {
+    font-size: 1.1em;
 }
 
+.signup-form p a {
+    text-decoration: none;
+    color: blue;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .form {
+        margin: 0 !important;
+    }
+
+    .form .form-field input {
+        width: 250px !important;
+    }
+
+    .signup-form {
+        background: transparent;
+    }
+
+    .signup-form h1 {
+        margin: 0;
+        letter-spacing: 0;
+        font-size: 16px;
+    }
+
+    .form .form-field {
+        padding: 0 !important;
+    }
+
+    .form .form-field .btn-form {
+        width: 260px !important;
+    }
+
+    .signup-form p {
+        width: 100% !important;
+    }
+}

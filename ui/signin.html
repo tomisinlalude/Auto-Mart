@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SignIn | AutoMart</title>
-
-  <link rel="stylesheet" href="css/signin.css">
+  <title>AutoMart | Register</title>
+  <link rel="icon" href="images/autoMart-logo.png">
+  <link rel="stylesheet" href="css/signup.css">
   <link rel="stylesheet" href="css/autoMart.css">
 </head>
 <body>
@@ -16,29 +16,50 @@
                 <a href="index.html"><img src="images/autoMart-logo.png" alt="AutoMart logo"></a>
             </div>
         </div>
+        <nav class="autoMart-nav">
+            <ul class="autoMart-nav__list">
+                <li class="autoMart-nav__item signin"><a href="signin.html">Login</a></li>
+                <li class="autoMart-nav__item signup"><a href="signup.html">Register</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <section class="container">
-            <form class="form signin-form">
-            <h1>Login to Your AutoMart account?</h1>
+            <form class="form signup-form">
+            <h1>Create an Account</h1>
+            <div class="form-field">
+                <label for="username">
+                </label>
+                <input type="text" placeholder="Username" id="username" autofocus required>
+            </div>
+        
+            <div class="form-field">
+                <label for="phone">
+                </label>
+                <input type="text" placeholder="Phone Number" id="phone" required>
+            </div>
             
             <div class="form-field">
                 <label for="email">
-                Email address
                 </label>
-                <input type="email" placeholder="email@domain.com" id="email" required>
+                <input type="email" placeholder="Email Address" id="email" required>
             </div>
         
             <div class="form-field">
                 <label for="password">
-                Password
                 </label>
-                <input type="password" placeholder="Enter password" id="password" required>
+                <input type="password" placeholder="Password" id="password" required>
+            </div>
+        
+            <div class="form-field">
+                <label for="password-repeat">
+                </label>
+                <input type="password" placeholder="Confirm Password" id="password-repeat" required>
             </div>
             
             <div class="form-field">
                 <button type="button" class="btn btn-form">
-                <span class="btn__text">Sign In</span>
+                <span class="btn__text">Register</span>
                 <span class="btn__loading-icon">
                     <i class="fas fa-spinner fa-pulse"></i>
                 </span>
@@ -46,18 +67,11 @@
             </div>
             
             <p>
-                Don't have an account?
-                <a href="signup.html">Sign up</a>
-            </p>
-			<p>
-                <a href="#" class="password-reset">Forgot Password?</a>
+                Already have an account?
+                <a href="signin.html">Login</a>
             </p>
             </form>
         </section>
     </main>
-    <footer>
-        <div class="footer-blob1"></div>
-        <div class="footer-blob2"></div>
-    </footer>
 </body>
 </html>

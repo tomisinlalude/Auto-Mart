@@ -1,19 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 
+body {
+  background: url('../images/bg-landing.jpeg') no-repeat right top;
+  background-size: cover;
+  background-clip: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.autoMart-nav__list .signin a:link, .autoMart-nav__list .signin a:visited {
+  border: none;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.autoMart-nav__list .signin a:hover {
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  background: transparent;
+  padding: 10px 38px;
+}
 
 h1 {
   margin-top: 1em;
   font-size: 60px;
   text-align: center;
-  letter-spacing: 0.2em;
+  font-family: Pacifico;
+  color: #FFFFFF;
 }
 
 .content-slider {
   width: 100%;
-  height: 500px;
-  background: #FFFFFF url('../images/white.jpeg') no-repeat right top;
-  background-size: cover;
+  height: 520px;
   border-radius: 15px;
-  color: #20303C;
+  color: #FFFFFF;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -48,8 +68,8 @@ h1 {
 }
 
 .slider .quote {
-  font-size: 40px;
-  font-style: italic;
+  font-size: 34px;
+  text-align: center;
 }
 
 .slider .source {
@@ -82,17 +102,17 @@ h1 {
 }
 
 .btn-purchase, .btn-advertise {
-    border-radius: 50px;
-    width: 200px;
+    border-radius: 10px;
+    width: 420px;
     height: 60px;
-    border: 1px solid #CE7C80;
-    background: #CE7C80;
-    color: 000000;
+    border: 1px solid #733802;
+    background: #733802;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 1.2em;
     text-align: center;
-    margin-top: 3em;
     cursor: pointer;
+    margin: 3em 7em;
 }
 
 @keyframes cycle {
@@ -281,4 +301,44 @@ h1 {
     opacity: 0;
     z-index: 0;
   }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+  .content-slider {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    position: relative;
+    margin-top: -6em;
+  }
+
+  .slider .quote {
+    font-size: 28px;
+    text-align: left !important;
+    width: 40%;
+    margin-left: 1em;
+  }
+  .slider .source {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 2em;
+    width: 50%;
+  }
+  
+  h1 {
+    font-size: 35px;
+    text-align: left;
+    margin-left: 3em;
+  }
+
+  .btn-purchase, .btn-advertise {
+    border-radius: 0;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+    
 }

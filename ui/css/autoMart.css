@@ -1,20 +1,17 @@
 /**
 * Global elements
 **/
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
 body,html {
     background: #FFFFFF;
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: Open Sans, Lato;
     }
     
     .container {
         width: 100%;
-    }
-    
-    hr {
-        margin: -2em;
     }
     
     div .autoMart-logo {
@@ -32,40 +29,49 @@ body,html {
     
     .autoMart-nav__list a {
         text-decoration: none;
-        color: #000000;
-    }
-    
-    .autoMart-nav__list a:hover, .autoMart-nav__list a:active {
-        border-bottom: 5px solid #e3b51e;
-        padding-bottom: 0.62em;
-    }
     
     .autoMart-nav__item {
-        margin: 2.5em;
+        margin: 2em;
     }
     
-    .autoMart-nav__item:last-of-type {
-        border: 1px solid #000000;
-        background: #000000;
-        color: #FFFFFF;
+    .autoMart-nav__list .signup a:link, .autoMart-nav__list .signin a:link {    
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 3.5px;
         font-size: 0.8em;
-        width: 70px;
-        height: 15px;
         text-align: center;
-        font-weight: bold;
+        cursor: pointer;
+        padding: 10px 25px;
+        margin: 4px 2px;
     }
-    
-    .autoMart-nav__item:last-of-type a{
+
+    .autoMart-nav__list .signup a:link, .autoMart-nav__list .signup a:visited {
+        border: 1px solid #733802;
+        background: #733802;
         color: #FFFFFF;
+    }
+
+    .autoMart-nav__list .signup a:hover {
+        background: #FFFFFF;
+        color: #733802;
+        padding: 10px 38px;
+        border: 1px solid #733802;
+    }
+
+    .autoMart-nav__list .signin a:link, .autoMart-nav__list .signin a:visited {
+        border: 1px solid #000000;
+        color: #000000;
+    }
+
+    .autoMart-nav__list .signin a:hover {
+        background: #000000;
+    
+    .autoMart-nav__item:last-of-type a {
+        color: #FFFFFF;
+        padding: 10px 38px;
     }
     
     .form {
-        border: 4px solid #CE7C80;
-        border-top-right-radius: 100px;
-        border-bottom-left-radius: 100px;
-        margin: -3em auto;
+        margin: 0 auto;
         width: 55%;
         text-align: center;
     }
@@ -76,55 +82,35 @@ body,html {
         margin: 1em;
     }
     
-    .form .form-field label {
-        margin-right: 1em;
-    }
-    
     .form .form-field input[type="text"],
     input[type="phone no"],
     input[type="email"], 
     input[type="password"] {
         padding: 8px;
-        border-radius: 2px;
         width: 300px;
     }
     
     .form .form-field .btn-form {
-        border-radius: 20px;
-        width: 120px;
-        height: 40px;
-        border: 1px solid #e3b51e;
-        background: #000000;
+        width: 320px;
+        height: 35px;
+        border: 1px solid #733802;
+        background: #733802;
         color: #FFFFFF;
-        font-weight: bold;
         font-size: 1em;
+        text-transform: uppercase;
     }
     
     .form .form-field input::placeholder {
         padding: 5px;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        .autoMart-nav__item {
+            justify-content: flex-start;
+            margin: 6em auto !important;
+        }
     
-    .form p {
-        font-size: 1.2em;
-        font-style: italic;
-    }
-    
-    .footer-blob1 {
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: #CE7C80;
-        left:40px;
-        top: 75%;
-    }
-    
-    .footer-blob2 {
-        position: absolute;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: #CE7C80;
-        left:115px;
-        top: 65%;
+        .autoMart-nav__list .signup a:link {    
+            margin-right: 1em !important;
+        }
     }
