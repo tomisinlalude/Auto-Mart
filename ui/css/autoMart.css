@@ -29,7 +29,6 @@ body,html {
     
     .autoMart-nav__list a {
         text-decoration: none;
-    }
     
     .autoMart-nav__item {
         margin: 2em;
@@ -65,6 +64,8 @@ body,html {
 
     .autoMart-nav__list .signin a:hover {
         background: #000000;
+    
+    .autoMart-nav__item:last-of-type a {
         color: #FFFFFF;
         padding: 10px 38px;
     }
