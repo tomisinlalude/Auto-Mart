@@ -1,18 +1,18 @@
-.signup-form {
-    height: 480px;
+.signin-form {
+    height: 300px;
     background: rgb(252, 247, 247);
 }
 
-.signup-form h1 {
+.signin-form h1 {
     margin: 1em 0 1.5em 0;
     letter-spacing: 0.1em;
 }
 
-.signup-form p {
+.signin-form p {
     font-size: 1.1em;
 }
 
-.signup-form p a {
+.signin-form p a {
     text-decoration: none;
     color: blue;
 }
@@ -26,11 +26,11 @@
         width: 250px !important;
     }
 
-    .signup-form {
+    .signin-form {
         background: transparent;
     }
 
-    .signup-form h1 {
+    .signin-form h1 {
         margin: 0;
         letter-spacing: 0;
         font-size: 16px;
@@ -44,7 +44,7 @@
         width: 260px !important;
     }
 
-    .signup-form p {
-        width: 100% !important;
+    .signin-form p {
+     margin-left: 4em !important;
     }
 }
