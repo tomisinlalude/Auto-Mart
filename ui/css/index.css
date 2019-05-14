@@ -5,7 +5,10 @@ body {
   background-size: cover;
   background-clip: border-box;
   width: 100%;
-  height: 100%;
+  height: 120%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
 }
 
 .autoMart-nav__list .signin a:link, .autoMart-nav__list .signin a:visited {
