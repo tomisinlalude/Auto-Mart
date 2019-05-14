@@ -45,6 +45,6 @@
     }
 
     .signup-form p {
-        width: 100% !important;
+        margin-left: 4em !important;
     }
 }
