@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Car Ads | AutoMart</title>
-
-  <link rel="stylesheet" href="css/signup.css">
-  <link rel="stylesheet" href="css/signin.css">
+  <title>AutoMart | Car Ads</title>
+  <link rel="icon" href="images/autoMart-logo.png">
   <link rel="stylesheet" href="css/autoMart.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/post-ad.css">
   <link rel="stylesheet" href="css/ad-list.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+  crossorigin="anonymous">
 </head>
 <body>
     <header id="autoMart-header">
@@ -22,109 +21,131 @@
         </div>
         <nav class="autoMart-nav">
             <ul class="autoMart-nav__list">
-                <li class="autoMart-nav__item"><a href="index.html">Home</a></li>
-                <li class="autoMart-nav__item"><a href="about.html">About</a></li>
-                <li class="autoMart-nav__item"><a href="signin.html">Sign In</a></li>
-                <li class="autoMart-nav__item"><a href="signup.html">Sign Up</a></li>
+                <li class="autoMart-nav__item post-ad"><a href="post-ad.html">Post Advert</a></li>
+                <li class="autoMart-nav__item signin"><a href="signin.html">Login</a></li>
+                <li class="autoMart-nav__item signup"><a href="signup.html">Register</a></li>
             </ul>
         </nav>
-    </header>
+        <div class="select">
+            <div class="dropdown">
+                <span>Manufacturer<i class="fas fa-angle-down"></i></span>
+                <div class="dropdown-content">
+                </div>
+            </div>
+            <div class="price-range">
+                <label>From</label>
+                <input placeholder="NGN 100,000">
+                <label>To</label>
+                <input placeholder="NGN 400,000">
+            </div>
+            <div class="dropdown">
+                    <span>Sort by: All<i class="fas fa-angle-down"></i></span>
+                    <div class="dropdown-content">
+                    </div>
+                </div>
+        </div>
+    </header><hr>
 
     <main>
-        <div class="ad-list__btn">
-            <a href="post-ad.html">
-            <span class="btn__text">Post an advert</span>
-            <span class="btn__loading-icon"></span>
-            </a>
-        </div>
-        <div class="card-container">
-            <div class="card">
-                <img src="./images/car.jpeg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+        <div class="car-card-container">
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist1.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
                 </div>
             </div>
 
-            <div class="card">
-                <img src="./images/carrr.jpg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist2.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
                 </div>
             </div>
         
-            <div class="card">
-                <img src="./images/yellow.jpeg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist3.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
                 </div>
             </div>
 
-            <div class="card">
-                <img src="./images/carrr.jpg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist4.png" alt="car-image">
                 </div>
-            </div>  
-
-            <div class="card">
-                <img src="./images/yellow.jpeg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
                 </div>
             </div>
 
-            <div class="card">
-                <img src="./images/car.jpeg" alt="Car">
-                <div class="container">
-                    <h4><b>Toyota Camry X8</b></h4> 
-                    <p>N550,000</p>
-                    <p>New</p>
-                    <button type="button" class="btn btn-form">
-                        <a href="purchase-order.html"><span class="btn__text">Buy Now</span></a>
-                        <span class="btn__loading-icon">
-                            <i class="fas fa-spinner fa-pulse"></i>
-                        </span>
-                    </button>
+        
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist5.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist6.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist7.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist8.png" alt="car-image">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="purchase-order.html">Buy</a>
                 </div>
             </div>
         </div>
