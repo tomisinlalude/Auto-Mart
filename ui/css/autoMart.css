@@ -72,6 +72,7 @@ body,html {
     .form {
         width: 55%;
         text-align: center;
+        margin: 1em auto;
     }
     
     .form .form-field {
