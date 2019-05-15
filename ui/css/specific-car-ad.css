@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+}
+.car-card-container {
+    width: 60%;
+}
+
+.car-card:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.car-card {
+    width: 600px;
+    height: 570px;
+    border: 1px solid #E5E5E5;
+    cursor: pointer;
+    margin: 2em auto;
+}
+
+.car-card h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    padding-left: 0.5em;
+}
+
+.car-image {
+    min-width: 600px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.car-image img {
+    min-width: inherit;
+}
+
+.car-image .w3-tag {
+    position: absolute;
+    margin: -36.9em 36.6em;
+    background: #02731B !important;
+    text-transform: uppercase;
+}
+
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    width: 530px;
+    flex-wrap: wrap;
+    padding-left: 0.5em;
+}
+
+.car-details label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.car-details span {
+    text-transform: capitalize;
+}
+
+.purchase h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.car-card-container .report-ad {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-left: 8.5em;
+    padding-bottom: 2em;
+    font-size: 13px;
+}
+
+.car-card-container .warning-icon {
+    display: inline-block;
+    padding-right: 0.7em;
+}
