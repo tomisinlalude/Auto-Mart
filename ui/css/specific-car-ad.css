@@ -62,17 +62,28 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
+    margin-left: 0.7em;
 }
 
 .car-card-container .report-ad {
-    text-decoration: none;
     text-transform: uppercase;
-    padding-left: 8.5em;
-    padding-bottom: 2em;
     font-size: 13px;
+    border: 1px solid #FF0000;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 8.3em;
+    margin-bottom: 3em;
 }
 
 .car-card-container .warning-icon {
     display: inline-block;
     padding-right: 0.7em;
+}
+
+.tandc {
+    margin: -23% 61.2%;
+    padding: 0;
+    width: 25%;
+    font-size: 14px;
+    color: #666666;
 }

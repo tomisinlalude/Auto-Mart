@@ -8,6 +8,7 @@
   <link rel="icon" href="images/autoMart-logo.png">
   <link rel="stylesheet" href="css/autoMart.css">
   <link rel="stylesheet" href="css/specific-car-ad.css">
+  <link rel="stylesheet" href="css/report-ad-modal.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -56,11 +57,99 @@
                         </div>
                     </div>
                 </div>
-                <a href="" class="report-ad"><img src="images/warning.png" alt="warning icon" class="warning-icon">Report Ad</a>
+                <button id="report" class="report-ad"><img src="images/warning.png" alt="warning icon" class="warning-icon">Report Ad</button>
             </div>
             <div class="purchase">
                 <h3>Make a Purchase</h3>
-            </div>
+                <form class="form">
+                
+                <div class="form-field">
+                    <label for="fullname">
+                    </label>
+                    <input type="text" placeholder="Full Name" id="fullname" autofocus required>
+                </div>
+            
+                <div class="form-field">
+                    <label for="phone">
+                    </label>
+                    <input type="text" placeholder="Phone Number" id="phone" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="email">
+                    </label>
+                    <input type="email" placeholder="Email Address" id="email" required>
+                </div>
+
+                <div class="form-field">
+                        <label for="price">
+                        </label>
+                        <input type="email" placeholder="Price in NGN" id="price" required>
+                </div>
+                <div class="form-field">
+                        <button type="button" class="btn btn-form">
+                        <span class="btn__text">Make Purchase order</span>
+                        </button>
+                </div>
         </div>
     </main>
+    <div class="tandc">
+        <p>By clicking here, you authorize AUTOMART and its sellers/partners to contact you by texts/calls which may
+            include marketing and be by autodialer. Calls may be pre-recorded. You also agree to our 
+            Privacy statement. Consent is not required to purchase goods/services.
+        </p>
+    </div>
+    
+      
+      <!-- The Modal -->
+      <div id="reportModal" class="modal">
+      
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Report an ad</h2>
+            <div class="form-field">
+                <label>Reason</label><br>
+                <input type="text">
+            </div>
+            <div class="form-field">
+                <label>Description</label><br>
+                <textarea class="text-area"></textarea>
+            </div>
+            <div class="form-field">
+                <button type="button" class="btn btn-form">
+                <span class="btn__text">Report</span>
+                </button>
+            </div>
+        </div>
+      
+      </div>
+      
+      <script>
+      // Get the modal
+      var modal = document.getElementById("reportModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("report");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
 </body>
