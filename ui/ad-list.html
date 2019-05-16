@@ -8,6 +8,7 @@
   <link rel="icon" href="images/autoMart-logo.png">
   <link rel="stylesheet" href="css/autoMart.css">
   <link rel="stylesheet" href="css/ad-list.css">
+  <link rel="stylesheet" href="css/post-ad.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -22,30 +23,38 @@
         </div>
         <nav class="autoMart-nav">
             <ul class="autoMart-nav__list">
-                <li class="autoMart-nav__item post-ad"><a href="post-ad.html">Post Advert</a></li>
+                <li class="autoMart-nav__item post-ad"><a href="#" id="postAd">Post Advert</a></li>
                 <li class="autoMart-nav__item signin"><a href="signin.html">Login</a></li>
                 <li class="autoMart-nav__item signup"><a href="signup.html">Register</a></li>
             </ul>
         </nav>
-        <div class="select">
-            <div class="dropdown">
-                <span>Manufacturer<i class="fas fa-angle-down"></i></span>
-                <div class="dropdown-content">
-                </div>
-            </div>
-            <div class="price-range">
-                <label>From</label>
-                <input placeholder="NGN 100,000">
-                <label>To</label>
-                <input placeholder="NGN 400,000">
-            </div>
-            <div class="dropdown">
-                    <span>Sort by: All<i class="fas fa-angle-down"></i></span>
-                    <div class="dropdown-content">
-                    </div>
-                </div>
-        </div>
     </header><hr>
+
+    <div class="select">
+        <div>
+            <select>
+                <option value="New">Model</option>
+                <option value="Used">Mercedez Benz</option>
+                <option value="Used">Toyota</option>
+                <option value="Used">Porsche</option>
+                <option value="Used">Audi</option>
+            </select>
+        </div>
+        <div class="price-range">
+            <label>From</label>
+            <input placeholder="NGN 100,000">
+            <label>To</label>
+            <input placeholder="NGN 400,000">
+        </div>
+        <div>
+            <select>
+                <option value="New">Sort by: All</option>
+                <option value="Used">Type</option>
+                <option value="Used">Model</option>
+                <option value="Used">Price</option>
+            </select>
+        </div>
+    </div>
 
     <main>
         <div class="car-card-container">
@@ -104,7 +113,6 @@
                     <a href="specific-car-ad.html">Buy</a>
                 </div>
             </div>
-
         
             <div class="car-card">
                 <div class="car-image">
@@ -159,4 +167,81 @@
             </div>
         </div>
     </main>
+
+     <!-- The Modal -->
+    <div id="postAdModal" class="modal">
+      
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Post an ad</h2>
+            <div class="car-upload">
+                <img src="images/gravatar.png" alt="car default">
+            </div>
+            <div class="file-upload">
+                    <a><img src="images/camera.png" alt="camera"></a>
+                </div>
+            <div class="form">
+                <div class="form-field">
+                    <label></label><br>
+                    <input type="text" placeholder="Car Make" required>
+                </div>
+                <div class="form-field">
+                    <label></label><br>
+                    <input type="text" placeholder="Car Model" required>
+                </div>
+                <div class="form-field">
+                    <label></label><br>
+                    <input type="text" placeholder="Car Manufacturer" required>
+                </div>
+                <div class="form-field">
+                    <label></label><br>
+                    <select>
+                        <option value="New">New</option>
+                        <option value="Used">Used</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label></label><br>
+                    <input placeholder="Car Price" required>
+                </div>
+                <div class="form-field">
+                    <button type="button" class="btn btn-form">
+                    <span class="btn__text">Post Ad</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("postAdModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("postAd");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+    </script>
+
 </body>

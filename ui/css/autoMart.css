@@ -72,6 +72,7 @@ body,html {
     .form {
         width: 55%;
         text-align: center;
+        margin: 1em auto;
     }
     
     .form .form-field {
@@ -89,7 +90,7 @@ body,html {
     }
     
     .form .form-field .btn-form {
-        width: 320px;
+        width: 340px;
         height: 50px;
         border: 1px solid #733802;
         background: #733802;
