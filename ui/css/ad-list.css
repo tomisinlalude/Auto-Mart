@@ -10,7 +10,7 @@
 
 .car-card {
   width: 300px;
-  height: 360px;
+  height: 370px;
   min-width: 300px;
   border: 1px solid #E5E5E5;
   cursor: pointer;
@@ -22,20 +22,24 @@
 }
 
 .car-image {
+  position: relative;
   width: inherit;
   height: 200px;
   overflow: hidden;
 }
 
-.car-image .w3-tag {
-  position: relative;
-  margin-top: -12em;
-  float: right;
+.w3-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
   background: #733802 !important;
   text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 0.5em;
+  font-size: 13px;
 }
 
-.car-image .new {
+.new {
   background: #02731B !important; 
 }
 
@@ -67,41 +71,28 @@
   font-size: 0.8em;
   text-align: center;
   cursor: pointer;
-  padding: 0 130px;
+  padding: 8px 130px;
   margin-left: 7px;
   text-transform: uppercase;
   color: #000000;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  margin-left: 1em;
-}
-
-.dropdown span {
-  display: inline-block;
-  font-size: 15px;
-  border: 1px solid #000000;
-  padding: 3px;
-  font-weight: bold;
+.select {
+  display: flex;
+  background: rgb(252, 247, 247);
+  padding: 5px;
 }
 
 .select div:first-of-type {
   margin-left: 1em;
-  margin-right: 13em;
 }
 
 .select div {
-  margin-left: 7em;
+  margin-left: 17em;
 }
 
-.dropdown i {
-  padding-left: 15px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+select, .price-range {
+  border-radius: 3px;
 }
 
 .price-range {
