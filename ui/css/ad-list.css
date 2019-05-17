@@ -169,3 +169,87 @@ select, .price-range {
   color: #733802;
   border: 1px solid #733802;
 }
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .select {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-top: 1em;
+  }
+  
+  .select div:first-of-type {
+    margin-left: 5.5em;
+  }
+  
+  .select div {
+    margin-left: 0;
+    margin: 0.5em;
+  }
+  
+  .price-range label {
+    margin-left: 0;
+  }
+
+  .price-range input {
+    width: 100px;
+  }
+
+  .autoMart-nav__list {
+    margin-top: -1em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .autoMart-nav__item {
+    margin: 1em !important;
+    font-size: 14px;
+  }
+
+  .autoMart-nav__item:last-of-type {
+    margin: 0.5em !important;
+    font-size: 14px;
+  }
+
+
+  hr {
+    display: none;
+  }
+
+  .user-dashboard {
+    margin: 4em auto;
+  }
+
+  .user-dashboard a {
+    margin: 1.8em !important;
+    font-size: 12px;
+  }
+
+  .post-ad-button {
+    position: absolute;
+    top: 11em !important;
+    right: -3em !important;
+    margin-top: 3em !important;
+  }
+}
+
+  @media screen and (max-width: 768px) {
+    .select {
+      display: flex;
+    }
+    
+    .select div {
+      margin-left: 6em;
+    }
+
+    .user-dashboard a {
+      margin: 3em;
+    }
+
+    .post-ad-button {
+      position: absolute;
+      top: 10em;
+      right: -2em;
+      margin-top: 3em;
+    }
+  }

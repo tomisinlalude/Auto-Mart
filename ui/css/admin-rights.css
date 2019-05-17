@@ -1,7 +1,20 @@
+.autoMart-nav__list  {
+  list-style-type: none;
+}
+
 .autoMart-nav__list .admin a {
     color: #000000;
     font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: flex-end;
+    margin: -9em 3em 0 0;
+    text-transform: uppercase;
   }
+
+.autoMart-nav__list a {
+    text-decoration: none;
+}
   
   .car-card-container {
     display: flex;
