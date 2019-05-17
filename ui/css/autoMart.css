@@ -30,6 +30,11 @@ body,html {
     .autoMart-nav__list a {
         text-decoration: none;
     }
+
+    .autoMart-nav__list .dashboard a {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
     
     .autoMart-nav__item {
         margin: 2em;

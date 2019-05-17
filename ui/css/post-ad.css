@@ -60,6 +60,7 @@
        width: 200px;
        height: 170px;
        margin: auto;
+       overflow: hidden;
    }
 
    .modal-content .file-upload {

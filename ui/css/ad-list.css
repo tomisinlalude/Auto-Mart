@@ -43,6 +43,10 @@
   background: #02731B !important; 
 }
 
+.reported {
+  background: #FF0000 !important; 
+}
+
 .car-details {
   margin: 0;
   padding: 0;
@@ -77,6 +81,12 @@
   color: #000000;
 }
 
+.car-details .edit-button {
+  padding: 0 !important;
+  border: none !important;
+  padding-left: auto;
+}
+
 .select {
   display: flex;
   background: rgb(252, 247, 247);
@@ -102,4 +112,60 @@ select, .price-range {
 
 .price-range label {
   margin-left: 1em;
+}
+
+/**Styling for user dashboard**/
+
+.user-dashboard {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+  margin: 2em auto;
+}
+
+.user-dashboard a {
+  margin: 9.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.user-dashboard a:last-of-type {
+  border-right: none;
+}
+
+.user-dashboard a:hover, .user-dashboard a:active {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 11.5px;
+}
+
+.post-ad-button {
+  position: absolute;
+  top: 13.5em;
+  right: 0;
+  margin: 0 5.2em 1em;
+}
+
+.post-ad-button a {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 3.5px;
+  font-size: 0.8em;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 4px 2px;
+  text-decoration: none;
+  border: 1px solid #733802;
+  background: #733802;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.post-ad-button a:hover {
+  background: #FFFFFF;
+  color: #733802;
+  border: 1px solid #733802;
 }

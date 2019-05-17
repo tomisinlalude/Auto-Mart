@@ -85,8 +85,14 @@
     padding-right: 0.7em;
 }
 
+.form {
+    width: 55%;
+    text-align: center;
+    margin: 0 !important;
+}
+
 .form .form-field .btn-form {
-    width: 340px;
+    width: 320px;
     height: 50px;
     border: 1px solid #733802;
     background: #733802;
@@ -96,7 +102,7 @@
 }
 
 .tandc {
-    margin: -23% 61.2%;
+    margin: -25% 61.2%;
     padding: 0;
     width: 25%;
     font-size: 14px;
