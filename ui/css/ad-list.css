@@ -170,6 +170,12 @@ select, .price-range {
   border: 1px solid #733802;
 }
 
+.mark-sold {
+  float: right;
+  color: green;
+  text-transform: uppercase;
+}
+
 @media screen and (min-width: 320px) and (max-width: 600px) {
   .select {
     display: flex;
