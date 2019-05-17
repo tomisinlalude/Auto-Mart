@@ -108,3 +108,103 @@
     font-size: 14px;
     color: #666666;
 }
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .car-card-container {
+        width: 100%;
+    }
+
+    .car-card {
+        width: 350px !important;
+        height: 420px !important;
+        margin: auto;
+    }
+
+    .car-image {
+        min-width: 350px;
+        height: 200px;
+    }
+
+    .car-details {
+        width: 230px;
+    }
+
+    .car-card-container .report-ad {
+        margin: 1em 0 2em 0;
+    }
+
+    .tandc {
+        margin: 3% 5%;
+        width: 87%;
+        font-size: 12px;
+    }
+
+    .form .form-field input[type="text"],
+    input[type="phone no"],
+    input[type="email"], 
+    input[type="password"] {
+        padding: 8px;
+        width: 270px;
+    }
+
+    .form .form-field .btn-form {
+        width: 270px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .car-card-container {
+        width: 100%;
+    }
+
+    .car-card {
+        width: 730px !important;
+        height: 600px !important;
+        margin: 0;
+    }
+
+    .car-image {
+        min-width: 730px;
+        height: 400px;
+    }
+
+    .car-details {
+        display: flex;
+        justify-content: space-between;
+        width: 530px;
+        flex-wrap: wrap;
+        padding-left: 0.5em;
+    }
+
+    .car-card-container .report-ad {
+        margin: 1em 4em 2em 0 !important;
+    }
+
+    .tandc {
+        margin: 3% 3%;
+        width: 60%;
+        font-size: 16px;
+    }
+
+    .form .form-field input[type="text"],
+    input[type="phone no"],
+    input[type="email"], 
+    input[type="password"] {
+        padding: 8px;
+        width: 450px;
+    }
+
+    .form .form-field .btn-form {
+        width: 450px;
+    }
+}
