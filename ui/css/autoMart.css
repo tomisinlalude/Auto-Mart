@@ -108,13 +108,31 @@ body,html {
         padding: 5px;
     }
 
-    @media screen and (min-width: 320px) and (max-width: 767px) {
+    @media screen and (min-width: 320px) and (max-width: 600px) {
+        .autoMart-nav__list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
         .autoMart-nav__item {
             justify-content: flex-start;
-            margin: 6em auto !important;
+            margin: 5em auto !important;
         }
     
-        .autoMart-nav__list .signup a:link {    
-            margin-right: 1em !important;
+        .autoMart-nav__item:last-of-type {    
+            margin: -3em auto !important;
+            
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .autoMart-nav__list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .autoMart-nav__item {
+            justify-content: flex-start;
+            margin: 5em auto !important;
         }
     }
