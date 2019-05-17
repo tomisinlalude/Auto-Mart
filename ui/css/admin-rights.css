@@ -100,3 +100,9 @@
       border: 1px solid #FF0000;
       background: rgb(224, 200, 200);
   }
+
+  @media screen and (max-width:768px) {
+    #deleteModal {
+      display: none !important;
+    }
+  }

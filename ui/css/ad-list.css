@@ -237,6 +237,10 @@ select, .price-range {
     right: -3em !important;
     margin-top: 3em !important;
   }
+
+  #postAdModal {
+   display: none !important; 
+  }
 }
 
   @media screen and (max-width: 768px) {
@@ -257,5 +261,9 @@ select, .price-range {
       top: 10em;
       right: -2em;
       margin-top: 3em;
+    }
+
+    #postAdModal {
+      display: none !important; 
     }
   }

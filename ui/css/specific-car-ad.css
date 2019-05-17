@@ -76,7 +76,7 @@
     border: 1px solid #FF0000;
     background: transparent;
     cursor: pointer;
-    margin-left: 8.3em;
+    margin-left: 11.5em;
     margin-bottom: 3em;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .tandc {
-    margin: -25% 61.2%;
+    margin: -23% 61.2%;
     padding: 0;
     width: 25%;
     font-size: 14px;
@@ -113,10 +113,6 @@
     .container {
         flex-direction: column;
     }
-
-    .autoMart-nav__item:last-of-type {    
-        margin: -3em auto !important; 
-    } 
 
     .car-card {
         width: 350px;
@@ -153,6 +149,10 @@
 
     .form .form-field .btn-form {
         width: 270px;
+    }
+
+    #reportModal {
+        display: none !important;
     }
 }
 
@@ -205,5 +205,9 @@
 
     .form .form-field .btn-form {
         width: 450px;
+    }
+
+    #reportModal {
+        display: none !important;
     }
 }
