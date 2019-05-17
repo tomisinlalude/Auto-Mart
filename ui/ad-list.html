@@ -24,6 +24,7 @@
         <nav class="autoMart-nav">
             <ul class="autoMart-nav__list">
                 <li class="autoMart-nav__item post-ad"><a href="#" id="postAd">Post Advert</a></li>
+                <li class="autoMart-nav__item post-ad"><a href="dashboard.html">Dashboard</a></li>
                 <li class="autoMart-nav__item signin"><a href="signin.html">Login</a></li>
                 <li class="autoMart-nav__item signup"><a href="signup.html">Register</a></li>
             </ul>
@@ -168,7 +169,7 @@
         </div>
     </main>
 
-     <!-- The Modal -->
+    <!-- The Post Ad Modal -->
     <div id="postAdModal" class="modal">
       
         <!-- Modal content -->
@@ -218,26 +219,26 @@
 
     <script>
         // Get the modal
-        var modal = document.getElementById("postAdModal");
+        const modal = document.getElementById("postAdModal");
         
         // Get the button that opens the modal
-        var btn = document.getElementById("postAd");
+        const btn = document.getElementById("postAd");
         
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        const span = document.getElementsByClassName("close")[0];
         
         // When the user clicks the button, open the modal 
-        btn.onclick = function() {
+        btn.onclick = () => {
             modal.style.display = "block";
         }
         
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+        span.onclick = () => {
             modal.style.display = "none";
         }
         
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
+        window.onclick = (event) => {
             if (event.target == modal) {
             modal.style.display = "none";
             }

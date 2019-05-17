@@ -22,21 +22,31 @@
   }
   
   .car-image {
+    position: relative;
     width: inherit;
     height: 200px;
     overflow: hidden;
   }
 
-  .car-image .w3-tag {
-    position: relative;
-    margin-top: -12em;
-    float: right;
+  .w3-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
     background: #733802 !important;
     text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 0.5em;
+    font-size: 13px;
+  }
+  
+  .new {
+    background: #02731B !important; 
   }
 
-  .car-image .new {
-    background: #02731B !important; 
+  .sold {
+    position: sticky;
+    background: #524E4E !important;
+    float: right;
   }
   
   .car-details {
@@ -56,12 +66,6 @@
   .car-price {
     font-weight: bold;
   }
-
-  .car-details .w3-tag {
-    float:right;
-    text-transform: uppercase;
-    background: #524E4E !important;
-  }   
   
   .car-details a {
     text-decoration: none;

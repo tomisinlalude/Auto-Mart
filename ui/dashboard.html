@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>AutoMart | Dashboard </title>
+  <link rel="icon" href="images/autoMart-logo.png">
+  <link rel="stylesheet" href="css/autoMart.css">
+  <link rel="stylesheet" href="css/ad-list.css">
+  <link rel="stylesheet" href="css/post-ad.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+  integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+  crossorigin="anonymous">
+</head>
+<body>
+    <header id="autoMart-header">
+        <div class="container">
+            <div class="autoMart-logo">
+                <a href="index.html"><img src="images/autoMart-logo.png" alt="AutoMart logo"></a>
+            </div>
+        </div>
+        <nav class="autoMart-nav">
+            <ul class="autoMart-nav__list">
+                <li class="autoMart-nav__item signin"><a href="signin.html">Login</a></li>
+                <li class="autoMart-nav__item signup"><a href="signup.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="user-dashboard">
+       <a href="dashboard.html">Posted Ads</a>
+       <a href="dashboard.html">Purchased Orders</a>
+       <a href="reported-ads.html">Reported Ads</a>
+    </div>
+
+    <div class="post-ad-button">
+        <a href="ad-list.html">View ads</a>
+    </div>
+
+    <main>
+        <div class="car-card-container">
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist1.png" alt="car-image">
+                    <p><span class="w3-tag new">New</span></p>
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="#" class="edit-button" id="editAd1" title="Edit Ad"><img src="images/edit.png" alt="edit icon"></a>
+                </div>
+            </div>
+
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist2.png" alt="car-image">
+                    <p><span class="w3-tag new">New</span></p>
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="#" class="edit-button" id="editAd2" title="Edit Ad"><img src="images/edit.png" alt="edit icon"></a>
+                </div>
+            </div>
+        
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist3.png" alt="car-image">
+                    <p><span class="w3-tag">Used</span></p>
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="#" class="edit-button" id="editAd3" title="Edit Ad"><img src="images/edit.png" alt="edit icon"></a>
+                </div>
+            </div>
+
+            
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="images/adlist4.png" alt="car-image">
+                    <p><span class="w3-tag new">New</span></p>
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Dodge viper acura nsx</p>
+                    <p class="car-desc">chrysler corp.</p>
+                    <p class="car-price">N5,500,000</p>
+                    <a href="#" class="edit-button" id="editAd4" title="Edit Ad"><img src="images/edit.png" alt="edit icon"></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- The Edit Ad Modal -->
+<div id="postAdModal" class="modal">
+    
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Price of ad</h2>
+        <div class="car-upload">
+            <img src="images/adlist2.png" alt="car default">
+        </div>
+        <div class="file-upload">
+                <a><img src="images/camera.png" alt="camera"></a>
+            </div>
+        <div class="form">
+            <div class="form-field">
+                <label></label><br>
+                <input type="text" placeholder="DODGE VIPER" disabled>
+            </div>
+            <div class="form-field">
+                <label></label><br>
+                <input type="text" placeholder="ACURA NSX" disabled>
+            </div>
+            <div class="form-field">
+                <label></label><br>
+                <input type="text" placeholder="Chrysler Corporation" disabled>
+            </div>
+            <div class="form-field">
+                <label></label><br>
+                <select disabled>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label></label><br>
+                <input placeholder="Car Price" required autofocus>
+            </div>
+            <div class="form-field">
+                <button type="button" class="btn btn-form">
+                <span class="btn__text">Edit Ad</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+    
+
+<script>
+        // Get the modal
+        const modal = document.getElementById("postAdModal");
+        
+        // Get the button that opens the modal
+        const btn1 = document.getElementById("editAd1");
+        const btn2 = document.getElementById("editAd2");
+        const btn3 = document.getElementById("editAd3");
+        const btn4 = document.getElementById("editAd4");
+        
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn1.onclick = () => {
+            modal.style.display = "block";
+        }
+
+        btn2.onclick = () => {
+            modal.style.display = "block";
+        }
+
+        btn3.onclick = () => {
+            modal.style.display = "block";
+        }
+
+        btn4.onclick = () => {
+            modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = () => {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = (event) => {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
