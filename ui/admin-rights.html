@@ -8,6 +8,7 @@
   <link rel="icon" href="images/autoMart-logo.png">
   <link rel="stylesheet" href="css/autoMart.css">
   <link rel="stylesheet" href="css/admin-rights.css">
+  <link rel="stylesheet" href="css/delete-ad-modal.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
   integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
@@ -22,7 +23,7 @@
         </div>
         <nav class="autoMart-nav">
             <ul class="autoMart-nav__list">
-                <li class="autoMart-nav__item admin"><a href="post-ad.html">Admin</a></li>
+                <li class="autoMart-nav__item admin"><a href="admin-rights.html">Admin</a></li>
             </ul>
         </nav>
     </header>
@@ -38,9 +39,9 @@
                 <div class="car-details">
                     <p class="car-name">Dodge viper acura nsx</p>
                     <p class="car-desc">chrysler corp.</p>
-                    <p><span class="w3-tag">Sold!</span></p>
+                    <p><span class="w3-tag sold">Sold!</span></p>
                     <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
+                    <a href="#" id="delete1"><img src="images/delete.png" alt="delete icon"></a>
                 </div>
             </div>
 
@@ -53,9 +54,9 @@
                 <div class="car-details">
                     <p class="car-name">Dodge viper acura nsx</p>
                     <p class="car-desc">chrysler corp.</p>
-                    <p><span class="w3-tag">Sold!</span></p>
+                    <p><span class="w3-tag sold">Sold!</span></p>
                     <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
+                    <a href="#" id="delete2"><img src="images/delete.png" alt="delete icon"></a>
                 </div>
             </div>
         
@@ -69,7 +70,7 @@
                     <p class="car-name">Dodge viper acura nsx</p>
                     <p class="car-desc">chrysler corp.</p>
                     <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
+                    <a href="#" id="delete3"><img src="images/delete.png" alt="delete icon"></a>
                 </div>
             </div>
 
@@ -82,96 +83,78 @@
                 <div class="car-details">
                     <p class="car-name">Dodge viper acura nsx</p>
                     <p class="car-desc">chrysler corp.</p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-        
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist5.png" alt="car-image">
-                    <p><span class="w3-tag">Used</span></p>
-                </div>
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist6.png" alt="car-image">
-                    <p><span class="w3-tag">Used</span></p>
-                </div>
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
-                    <p><span class="w3-tag">Sold!</span></p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist7.png" alt="car-image">
-                    <p><span class="w3-tag new">New</span></p>
-                </div>
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist8.png" alt="car-image">
-                    <p><span class="w3-tag">Used</span></p>
-                </div>
-                
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
                     <p><span class="w3-tag sold">Sold!</span></p>
                     <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist8.png" alt="car-image">
-                    <p><span class="w3-tag">Used</span></p>
-                </div>
-                
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
-                    <p><span class="w3-tag sold">Sold!</span></p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
-                </div>
-            </div>
-
-            <div class="car-card">
-                <div class="car-image">
-                    <img src="images/adlist8.png" alt="car-image">
-                    <p><span class="w3-tag">Used</span></p>
-                </div>
-                
-                <div class="car-details">
-                    <p class="car-name">Dodge viper acura nsx</p>
-                    <p class="car-desc">chrysler corp.</p>
-                    <p><span class="w3-tag sold">Sold!</span></p>
-                    <p class="car-price">N5,500,000</p>
-                    <a href=""><img src="images/delete.png" alt="delete icon"></a>
+                    <a href="#" id="delete4"><img src="images/delete.png" alt="delete icon"></a>
                 </div>
             </div>
         </div>
     </main>
+
+<!-- The Modal -->
+<div id="reportModal" class="modal">
+      
+        <!-- Modal content -->
+        <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Delete an ad</h2>
+                <h4>Are you sure you want to delete this ad?</h4>
+            <div class="button-options">
+            <div>
+                <button type="button" class="btn-form cancel">
+                <span>Cancel</span>
+                </button>
+            </div>
+            <div>
+                <button type="button" class="btn-form">
+                <span>Delete</span>
+                </button>
+            </div>
+            </div>
+        </div>
+      
+      </div>
+      
+      <script>
+      // Get the modal
+      const modal = document.getElementById("reportModal");
+      
+      // Get the button that opens the modal
+      const btn1 = document.getElementById("delete1");
+      const btn2 = document.getElementById("delete2");
+      const btn3 = document.getElementById("delete3");
+      const btn4 = document.getElementById("delete4");
+      
+      // Get the <span> element that closes the modal
+      const span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn1.onclick = () => {
+        modal.style.display = "block";
+      }
+
+      btn2.onclick = () => {
+        modal.style.display = "block";
+      }
+      btn3.onclick = () => {
+        modal.style.display = "block";
+      }
+
+      btn4.onclick = () => {
+        modal.style.display = "block";
+      }
+
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = () => {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
 </body>
