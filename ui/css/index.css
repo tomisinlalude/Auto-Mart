@@ -307,6 +307,22 @@ h1 {
 }
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
+  .autoMart-nav__item:last-of-type {    
+    margin: -3em auto !important; 
+  } 
+
+  .autoMart-nav__item {
+    margin-left: 1em !important;
+  }
+
+  .autoMart-nav__list .signin {
+    margin-top: -3em !important;
+  }
+
+  .slider {
+  height: 260px;
+  width: 500px;
+  }
 
   .content-slider {
     width: 100%;
@@ -317,16 +333,16 @@ h1 {
   }
 
   .slider .quote {
-    font-size: 28px;
+    font-size: 24px !important;
     text-align: left !important;
-    width: 40%;
+    width: 45% !important;
     margin-left: 1em;
   }
   .slider .source {
     font-size: 16px;
     text-align: left;
     margin-left: 2em;
-    width: 50%;
+    width: 40%;
   }
   
   h1 {
@@ -337,7 +353,7 @@ h1 {
 
   .btn-purchase, .btn-advertise {
     border-radius: 0;
-    width: 120px;
+    width: 160px;
     height: 40px;
     text-align: center;
     box-sizing: border-box;

@@ -118,11 +118,6 @@ body,html {
             justify-content: flex-start;
             margin: 5em auto !important;
         }
-    
-        .autoMart-nav__item:last-of-type {    
-            margin: -3em auto !important;
-            
-        }
     }
 
     @media screen and (max-width: 768px) {

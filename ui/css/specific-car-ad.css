@@ -112,16 +112,15 @@
 @media screen and (min-width: 320px) and (max-width: 600px) {
     .container {
         flex-direction: column;
-        width: 100%;
     }
 
-    .car-card-container {
-        width: 100%;
-    }
+    .autoMart-nav__item:last-of-type {    
+        margin: -3em auto !important; 
+    } 
 
     .car-card {
-        width: 350px !important;
-        height: 420px !important;
+        width: 350px;
+        height: 420px;
         margin: auto;
     }
 
@@ -135,7 +134,7 @@
     }
 
     .car-card-container .report-ad {
-        margin: 1em 0 2em 0;
+        margin: 1em 0 2em 0 !important;
     }
 
     .tandc {
@@ -157,7 +156,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .container {
         flex-direction: column;
         width: 100%;
