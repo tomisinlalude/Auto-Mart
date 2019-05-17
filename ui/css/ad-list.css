@@ -170,6 +170,12 @@ select, .price-range {
   border: 1px solid #733802;
 }
 
+.mark-sold {
+  float: right;
+  color: green;
+  text-transform: uppercase;
+}
+
 @media screen and (min-width: 320px) and (max-width: 600px) {
   .select {
     display: flex;
@@ -231,6 +237,10 @@ select, .price-range {
     right: -3em !important;
     margin-top: 3em !important;
   }
+
+  #postAdModal {
+   display: none !important; 
+  }
 }
 
   @media screen and (max-width: 768px) {
@@ -251,5 +261,9 @@ select, .price-range {
       top: 10em;
       right: -2em;
       margin-top: 3em;
+    }
+
+    #postAdModal {
+      display: none !important; 
     }
   }
