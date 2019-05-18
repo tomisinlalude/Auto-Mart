@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg?branch=develop)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart?branch=develop)
+[![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg?branch=develop)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 # Auto-Mart
 
