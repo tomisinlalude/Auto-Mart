@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart)
+[![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg?branch=develop)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart?branch=develop)
 
 # Auto-Mart
 
