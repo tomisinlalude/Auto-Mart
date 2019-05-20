@@ -6,7 +6,6 @@ const user = {
         trim: true,
     },
     phoneNumber: {
-        type: integer,
         unique: true,
     },
     email: {
