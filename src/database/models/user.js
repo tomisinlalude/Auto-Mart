@@ -1,11 +1,17 @@
 import bcrypt from 'bcrypt';
 
-const user = {
+const User = ({
+    id: {
+        type: Number,
+        increment: true, 
+        unique: true,
+    },
     userName: {
         type: String,
         trim: true,
     },
     phoneNumber: {
+        type: Number,
         unique: true,
     },
     email: {
@@ -20,8 +26,11 @@ const user = {
         type: String,
         set: v => bcrypt.hashSync(v, 10),
     },
+    isAdmin: {
+        type: Boolean,
+    },
     createdOn: Date,
     updatedOn: Date,
-};
+});
 
-export default user;
+export default User;
