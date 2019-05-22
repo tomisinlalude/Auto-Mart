@@ -1,14 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import User from '../../src/database/models/user';
-
-import app from '../src/index';
 
 const { expect } = chai;
 chai.use(chaiHttp);
 
-describe('User', () => {
-    describe('/POST User', () => {
+describe('/user', () => {
+    describe('/POST user', () => {
         it('it should only POST user requests that meet all required fields', (done) => {
           const user = {
             userName,

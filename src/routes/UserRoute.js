@@ -7,9 +7,6 @@ import UserControllers from '../controllers/UserControllers';
 dotenv.config();
 const UserRouter = express.Router();
 
-UserRouter.post('/signup', () => {
-UserMiddlewares.validateUsername, 
-UserControllers.createUser 
-});
+UserRouter.post('/signup', UserMiddlewares.validateUsername, UserControllers.createUser);
 
 export default UserRouter;

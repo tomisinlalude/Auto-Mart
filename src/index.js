@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('dev'));
 
-app.use('/user', UserRoute);
+app.use('api/v1/user', UserRoute);
 
 app.listen(port, () => {
     console.log(`server running on port ${port}`)
