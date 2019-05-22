@@ -1,16 +1,28 @@
 import express from 'express';
-const UserRouter = express.Router();
+import dotenv from 'dotenv';
 
+import responseHelper from '../helpers/responseHelper';
 import User from '../database/models/user';
 
-UserRouter.route('/create').post((req, res) => {
-  const user = new User(req.body);
-  user.save()
+dotenv.config();
+const UserRouter = express.Router();
+
+UserRouter.post('/signup', (req, res) => {
+  const { id, userName, phoneNumber, email, password } = req.params;
+  User.insertUser(req.body)
     .then(user => {
-      res.json('User added successfully');
+      responseHelper.successRes;
+      res,
+    {  data: {
+        id: user.id,
+        userName: user.userName,
+        phoneNumber: user.phoneNumber,
+        email: user.email,
+        password: user.password,
+      } }
     })
     .catch(err => {
-      res.status(400).send("Unable to save data");
+      responseHelper.sendServerErrorResponse;
     });
 });
 

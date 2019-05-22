@@ -1,4 +1,4 @@
-import ResponseHelper from '../helpers/responseHelper';
+import responseHelper from '../helpers/responseHelper';
 
 class UserAuth {
 /**
