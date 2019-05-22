@@ -9,8 +9,7 @@
     "build": "babel src --out-dir dist",
     "start": "node dist/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js ",
-    "watch": "nodemon --exec babel-node --presets babel-preset-env src/index.js",
-    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
+    "watch": "nodemon --exec babel-node --presets babel-preset-env src/index.js"
   },
   "repository": {
     "type": "git",
