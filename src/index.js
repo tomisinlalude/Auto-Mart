@@ -4,8 +4,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-import UserData from '../src/database/seeders/user-seed';
-import UserRoute from '../src/routes/user-route';
+import UserRoute from './routes/UserRoute';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,7 +19,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('dev'));
 
-app.use('/users', UserData);
 app.use('/user', UserRoute);
 
 app.listen(port, () => {
