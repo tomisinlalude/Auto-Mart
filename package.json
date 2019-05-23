@@ -4,10 +4,10 @@
   "description": "Auto Mart is an online marketplace for automobiles of diverse makes, model or body type where users can sell their cars or buy from trusted dealerships or private sellers. ",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc mocha src/test --compiler",
+    "test": "nyc ./node_modules/.bin/mocha src/test --require @babel/register",
     "clean:build": "rm -R dist",
-    "build": "babel src --out-dir dist",
-    "start": "node dist/index.js",
+    "build": "babel src --out-dir dist --source-maps",
+    "serve": "node dist/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js",
     "watch": "nodemon --exec babel-node --presets babel-preset-env src/index.js"
   },

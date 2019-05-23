@@ -18,8 +18,8 @@ const userCredentials = {
 describe('/POST user', () => {
     it('all required fields should be filled', (done) => {
         authUser
-            .post('/api/v1/auth/signup')
-            .type('form')
+            .post('/api/v1/signup')
+            .type('signup.html; charset=utf-8')
             .send(userCredentials)
             .end((err, res) => {
                 expect(res).to.be.json;
@@ -31,8 +31,8 @@ describe('/POST user', () => {
     });
     it('POST a new user', (done) => {
         authUser
-            .post('/api/v1/auth/signup')
-            .type('form')
+            .post('/api/v1/signup')
+            .type('ui/signup.html; charset=utf-8')
             .send(userCredentials)
             .end((err, res) => {
                 expect(err).to.be.null;
@@ -45,7 +45,7 @@ describe('/POST user', () => {
                 expect(res).to.have.param('data', 'email');
                 expect(res).to.have.param('data', 'password');
                 expect(res).to.have.param('data', 'confirmPassword');
-                expect(res).to.redirectTo('/index.html');
+                expect(res).to.redirectTo('ui/index.html');
                 done();
             });
     });
