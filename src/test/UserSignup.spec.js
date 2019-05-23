@@ -24,7 +24,6 @@ describe('/POST user', () => {
             .end((err, res) => {
                 expect(res).to.be.json;
                 expect(res).to.have.status(500);
-                expect(res).to.have.success(false);
                 expect(res.body).to.have.param('message');
                 expect(res).to.not.redirect;
                 done();
@@ -39,7 +38,6 @@ describe('/POST user', () => {
                 expect(err).to.be.null;
                 expect(res).to.be.json;
                 expect(res).to.have.status(200);
-                expect(res).to.have.success(true);
                 expect(res).to.have.param('message');
                 expect(res).to.have.param('data');
                 expect(res).to.have.param('data', 'userName');
