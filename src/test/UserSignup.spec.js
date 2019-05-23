@@ -1,54 +1,54 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import { expect } from 'chai';
 
 import entry from '../index';
 
 chai.use(chaiHttp);
 
+const expect = chai.expect;
 const authUser = chai.request(entry);
 const userCredentials = {
-    userName: 'tomisinlalude',
-    phoneNumber: parseInt('08154332954'),
-    email: 'oluwatomisin1605@gmail.com', 
-    password: 'oyinda',
-};
+    'userName': 'tomisinlalude',
+    'phoneNumber': parseInt('08154332954'),
+    'email': 'oluwatomisin1605@gmail.com', 
+    'password': 'oyinda',
+    'confirmPassword': 'oyinda'
+}
 
 describe('/POST user', () => {
-    it('all required fields should be filled', () => {
-        userCredentials;
-        before((done) => {
-            authUser
-                .post('/api/v1/auth/signup')
-                .send(userCredentials)
-                .end((err, res) => {
-                    expect(res.status).to.equal(500);
-                    expect(res.success).to.be.false;
-                    expect(res.body).to.be('object');
-                    expect(res.body).to.have('message');
-                    done();
-                });
-        });
+    it('all required fields should be filled', (done) => {
+        authUser
+            .post('/api/v1/auth/signup')
+            .type('form')
+            .send(userCredentials)
+            .end((err, res) => {
+                expect(res).to.be.json;
+                expect(res).to.have.status(500);
+                expect(res).to.have.success(false);
+                expect(res.body).to.have.param('message');
+                expect(res).to.not.redirect;
+                done();
+            });
     });
-    it('POST a new user', () => {
-        userCredentials;
-        before((done) => {
-            authUser
-                .post('/api/v1/auth/signup')
-                .send(userCredentials)
-                .end((err, res) => {
-                    expect(res.status).to.equal(200);
-                    expect(res.success).to.be.true;
-                    expect(res.body).to.be('object');
-                    expect(res.body).to.have('message');
-                    expect(res.body.data).to.have('id');
-                    expect(res.body.data).to.have('userName');
-                    expect(res.body.data).to.have('phoneNumber');
-                    expect(res.body.data).to.have('email');
-                    expect(res.body.data).to.have('password');
-                    expect('Location', '/');
-                    done();
-                });
-        });
+    it('POST a new user', (done) => {
+        authUser
+            .post('/api/v1/auth/signup')
+            .type('form')
+            .send(userCredentials)
+            .end((err, res) => {
+                expect(err).to.be.null;
+                expect(res).to.be.json;
+                expect(res).to.have.status(200);
+                expect(res).to.have.success(true);
+                expect(res).to.have.param('message');
+                expect(res).to.have.param('data');
+                expect(res).to.have.param('data', 'userName');
+                expect(res).to.have.param('data', 'phoneNumber');
+                expect(res).to.have.param('data', 'email');
+                expect(res).to.have.param('data', 'password');
+                expect(res).to.have.param('data', 'confirmPassword');
+                expect(res).to.redirectTo('/index.html');
+                done();
+            });
     });
 });

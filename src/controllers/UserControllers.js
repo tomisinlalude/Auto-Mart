@@ -5,7 +5,7 @@ class UserControllers {
         try {
             const user = { ...req.params };
             User.insertUser(user);
-                res.status(200).json ({
+                res.status(200).json({
                     success: true,
                     message: 'User has been created',
                     data: {
@@ -14,6 +14,7 @@ class UserControllers {
                     phoneNumber: user.phoneNumber,
                     email: user.email,
                     password: user.password,
+                    confirmPassword: user.password,
                     createdOn: Date.now(),
                     updatedOn: Date.now(),
                     }

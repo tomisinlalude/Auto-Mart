@@ -13,5 +13,5 @@
       "ecmaVersion": 2018,
       "sourceType": "module"
     },
-    "plugins": ["mocha"]
+    "plugins": ["mocha", "eslint-plugin-mocha"]
   }
