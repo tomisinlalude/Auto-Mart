@@ -1,9 +1,7 @@
+const allUsers = [];
 export default class Users {
-    constructor() {
-        this.users = [];
-    }
 
-    insertUser(user) {
-        this.users.push(user);
+    static insertUser(user) {
+        return allUsers.push(user);
     }
 } 

@@ -8,6 +8,5 @@ dotenv.config();
 const UserRouter = express.Router();
 
 UserRouter.post('/signup', UserMiddlewares.validateUsername, UserControllers.createUser);
-UserRouter.get('/signup', UserMiddlewares.validateUsername, UserControllers.createUser);
 
 export default UserRouter;
