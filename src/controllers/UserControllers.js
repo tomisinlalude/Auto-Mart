@@ -1,19 +1,23 @@
-import User from '../database/models/Users';
+import Users from '../database/models/Users';
+
+const { insertUser } = Users;
 
 class UserControllers {
     static createUser(req, res) {
         try {
-            const user = { ...req.params };
-            User.insertUser(user);
-                res.status(200).json ({
+            const { userName, phoneNumber, email, password } = req.body;
+            const user = {
+                userName, phoneNumber, email, password
+            }
+            insertUser(user);
+                res.status(200).json({
                     success: true,
                     message: 'User has been created',
                     data: {
-                    id: user.id,
-                    userName: user.userName,
-                    phoneNumber: user.phoneNumber,
-                    email: user.email,
-                    password: user.password,
+                    // id,
+                    userName,
+                    phoneNumber,
+                    email,
                     createdOn: Date.now(),
                     updatedOn: Date.now(),
                     }
@@ -23,7 +27,8 @@ class UserControllers {
         catch(err) {
             res.status(500).json ({
                 success: false,
-                message: 'User creation failed'
+                message: 'User creation failed',
+                err,
             });
         }
     }
