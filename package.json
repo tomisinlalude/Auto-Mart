@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc ./node_modules/.bin/mocha src/test --require @babel/register --exit --no-timeouts",
     "clean:build": "rm -R dist",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel src --out-dir dist --source-maps",
     "serve": "node dist/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js",
