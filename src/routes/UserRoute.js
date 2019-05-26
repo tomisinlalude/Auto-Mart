@@ -10,7 +10,7 @@ const UserRouter = express.Router();
 UserRouter.post('/signup', 
 UserMiddlewares.validateUsername, 
 UserMiddlewares.validatePhoneNumber, 
-// UserMiddlewares.validatePassword, 
+UserMiddlewares.validatePassword, 
 UserControllers.createUser);
 
 UserRouter.post('/signin', 

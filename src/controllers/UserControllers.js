@@ -1,4 +1,15 @@
-import Users from '../database/models/Users';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config()
+
+const secret = process.env.SECRET_KEY;
+
+const generateToken = payload => {
+    return jwt.sign(payload, secret, {expiresIn: '240h'});
+}
+
+import { Users, UserDb } from '../database/models/Users';
 
 const { insertUser, login } = Users;
 
@@ -36,19 +47,19 @@ class UserControllers {
     static userLogin(req, res) {
         try {
             const { email, password } = req.body;
-            const user = {
-                email, password
-            }
-            login(user);
-                res.status(200).json({
-                    success: true,
-                    message: 'User has been logged in',
-                    data: {
-                    // id
-                    email,
-                    updatedOn: Date.now(),
-                    }
+            const user = UserDb.find(user => user.email === email && user.password === password);
+            if(!user) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'User does not exist',
                 })
+            }
+            const token = generateToken({id: user.id, email, username:user.username});
+            return  res.status(201).json({
+                success: true,
+                message: 'User has been logged in',
+                token,
+            })
         }
     
         catch(err) {

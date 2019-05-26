@@ -12,8 +12,7 @@ class UserMiddlewares {
     }
     static validatePhoneNumber (req, res, next) {
         const { phoneNumber } = req.body;
-        const regex = /^\d{10}$/;
-        if (regex.test(phoneNumber)) {
+        if (phoneNumber.length < 11) {
             return res.status(400).json({
                 success: false,
                 message: "Your phone number should be 11 digits",
@@ -21,23 +20,22 @@ class UserMiddlewares {
         }
         return next();
     }
-    // static validatePassword (req, res, next) {
-    //     const { password, confirmPassword } = req.body;
-    //     const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/;
-    //     if (regex.test(password)) {
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: "Your password must be between 6 and 15 characters in length and contain at least one digit and one special character",
-    //         });
-    //     }
-    //     if (password !== confirmPassword) {
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: "Your passwords don't match",
-    //         });
-    //     }
-    //     return next();
-    // }
+    static validatePassword (req, res, next) {
+        const { password, confirmPassword } = req.body;
+        if (password.length < 6) {
+            return res.status(400).json({
+                success: false,
+                message: "Your password must be more than 6 characters in length",
+            });
+        }
+        if (password !== confirmPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Your passwords don't match",
+            });
+        }
+        return next();
+    }
 }
 
 export default UserMiddlewares;
