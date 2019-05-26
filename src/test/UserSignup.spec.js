@@ -11,16 +11,32 @@ const userCredentials = {
     userName: 'tomisinlalude',
     phoneNumber: '08154332954',
     email: 'oluwatomisin1605@gmail.com', 
-    password: 'oyinda',
-    confirmPassword: 'oyinda'
+    password: 'oyinda5_',
+    confirmPassword: 'oyinda5_'
 }
 
 const userCredentialsWithWrongUsername = {
     userName: 'tomis9',
     phoneNumber: '08154332954',
     email: 'oluwatomisin1605@gmail.com', 
-    password: 'oyinda',
-    confirmPassword: 'oyinda'
+    password: 'oyinda5_',
+    confirmPassword: 'oyinda5_'
+}
+
+const userCredentialsWithWrongPhoneNumber = {
+    userName: 'tomis9',
+    phoneNumber: '081543329',
+    email: 'oluwatomisin1605@gmail.com', 
+    password: 'oyinda5_',
+    confirmPassword: 'oyinda5_'
+}
+
+const userCredentialsWithWrongPassword = {
+    userName: 'tomisinlalude',
+    phoneNumber: '08154332954',
+    email: 'oluwatomisin1605@gmail.com', 
+    password: 'oyi',
+    confirmPassword: 'oyi'
 }
 
 describe('/POST user', () => {
@@ -50,4 +66,28 @@ describe('/POST user', () => {
                 done();
             });
     });
+    it('should throw a 400 error if phone number is not 11 digits', (done) => {
+        chai.request(app)
+            .post('/api/v1/user/signup')
+            .set('Accept', 'application/json')
+            .send(userCredentialsWithWrongPhoneNumber)
+            .end((err, res) => {
+                expect(res.status).to.eql(400);
+                expect(res.body.success).to.eql(false);
+                expect(res.body.message).to.eql("You cannot use digits in your username");
+                done();
+            });
+    });
+    // it('should throw a 400 error if password is less than six characters and does not contain a digit and special character', (done) => {
+    //     chai.request(app)
+    //         .post('/api/v1/user/signup')
+    //         .set('Accept', 'application/json')
+    //         .send(userCredentialsWithWrongPassword)
+    //         .end((err, res) => {
+    //             expect(res.status).to.eql(400);
+    //             expect(res.body.success).to.eql(false);
+    //             expect(res.body.message).to.eql("Your password must contain at least six characters, a digit and a special number");
+    //             done();
+    //         });
+    // });
 });
