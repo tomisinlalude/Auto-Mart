@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import dotenv from 'dotenv';
 
-import { Cars } from '../database/models/Users';
+import { Cars } from '../database/models/Models';
 
 dotenv.config();
 
