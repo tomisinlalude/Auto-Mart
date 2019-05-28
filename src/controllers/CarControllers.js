@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable consistent-return */
+
 import dotenv from 'dotenv';
 
 import { Cars } from '../database/models/Models';
