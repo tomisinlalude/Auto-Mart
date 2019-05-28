@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 dotenv.config();
 
 app.use(cors({
-    credentials: true,
+  credentials: true,
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -22,7 +22,7 @@ app.use(morgan('dev'));
 app.use('/api/v1/user', UserRoute);
 
 app.listen(port, () => {
-    console.log(`server running on port ${port}`)
+  console.log(`server running on port ${port}`);
 });
 
 export default app;
