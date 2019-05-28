@@ -3,9 +3,11 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import debug from 'debug';
 
 import UserRoute from './routes/UserRoute';
 
+const debug = debug('http');
 const app = express();
 const port = process.env.PORT || 3000;
 dotenv.config();

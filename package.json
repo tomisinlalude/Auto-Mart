@@ -8,8 +8,8 @@
     "clean:build": "rm -R dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel src --out-dir dist --source-maps",
-    "serve": "node dist/index.js",
-    "start:dev": "nodemon --exec babel-node src/index.js",
+    "start": "DEBUG=http node dist/index.js",
+    "start:dev": "DEBUG=http nodemon --exec babel-node src/index.js",
     "watch": "nodemon --exec babel-node --presets babel-preset-env src/index.js"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "debug": "^4.1.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
