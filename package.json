@@ -8,8 +8,8 @@
     "clean:build": "rm -R dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel src --out-dir dist --source-maps",
-    "start": "DEBUG=http node dist/index.js",
-    "start:dev": "DEBUG=http nodemon --exec babel-node src/index.js",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --exec babel-node src/index.js",
     "watch": "nodemon --exec babel-node --presets babel-preset-env src/index.js"
   },
   "repository": {
@@ -50,7 +50,7 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-react": "^7.11.0",
+    "eslint-plugin-mocha": "^5.3.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
     "nyc": "^14.1.1"
