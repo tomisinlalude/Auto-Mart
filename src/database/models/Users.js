@@ -12,3 +12,9 @@ export class Users {
     return UserDb.push(user);
   }
 }
+
+export class Cars {
+  static addCar(car) {
+    return UserDb.push(car);
+  }
+}
