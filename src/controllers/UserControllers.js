@@ -1,7 +1,8 @@
+/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-import { Users, UserDb } from '../database/models/Users';
+import { Users, UserDb } from '../database/models/Models';
 
 dotenv.config();
 

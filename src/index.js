@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-import UserRoute from './routes/UserRoute';
+import UserRoute from './routes/route';
 
 const app = express();
 const port = process.env.PORT || 3000;

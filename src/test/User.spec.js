@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 
