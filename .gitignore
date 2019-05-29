@@ -6,7 +6,7 @@
 
 # Testing
 .nyc_output
-/coverage
+coverage
 
 # Production
 /dist
