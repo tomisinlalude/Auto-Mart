@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import express from 'express';
 import dotenv from 'dotenv';
 
@@ -9,8 +10,8 @@ import CarControllers from '../controllers/CarControllers';
 dotenv.config();
 const UserRouter = express.Router();
 
-UserRouter.post('/signup',
-  UserMiddlewares.validateUsername,
+UserRouter.post('/auth/signup',
+  UserMiddlewares.validateName,
   UserMiddlewares.validatePhoneNumber,
   UserMiddlewares.validatePassword,
   UserControllers.createUser);

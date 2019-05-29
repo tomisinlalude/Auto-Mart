@@ -1,10 +1,16 @@
+/* eslint-disable linebreak-style */
 export const UserDb = [
   {
     id: 1,
-    userName: 'JohnDoe',
+    token: '',
     email: 'johndoe@mail.com',
+    firstName: 'John',
+    lastName: 'Doe',
     password: 'password',
+    confirmPassword: 'password',
     phoneNumber: '08012345678',
+    address: 'Birrel Avenue, Yaba, Lagos',
+    isAdmin: false,
   },
 ];
 export const carDb = [
