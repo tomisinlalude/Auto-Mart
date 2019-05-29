@@ -37,7 +37,7 @@ const userCredentialsWithWrongPhoneNumber = {
   lastName: 'Doe',
   password: 'password',
   confirmPassword: 'password',
-  phoneNumber: '0801234',
+  phoneNumber: '080123',
   address: 'Birrel Avenue, Yaba, Lagos',
   isAdmin: false,
 };
@@ -58,7 +58,7 @@ const userCredentialsWithNonMatchingPasswords = {
   firstName: 'John',
   lastName: 'Doe',
   password: 'password',
-  confirmPassword: 'passw',
+  confirmPassword: 'pass',
   phoneNumber: '08012345678',
   address: 'Birrel Avenue, Yaba, Lagos',
   isAdmin: false,
@@ -67,15 +67,14 @@ const userCredentialsWithNonMatchingPasswords = {
 describe('/POST user', () => {
   it('POST a new user', (done) => {
     chai.request(app)
-      .post('api/v1/user/auth/signup')
-      .set('Authorization', 'JWT_VALID')
+      .post('/api/v1/user/auth/signup')
+      .set('Accept', 'application/json')
       .send(userCredentials)
       .end((err, res) => {
-        // eslint-disable-next-line no-console
-        console.log(res);
         expect(res.status).to.eql(200);
         expect(res.body.success).to.eql(true);
         expect(res.body.message).to.eql('User has been created');
+        expect(res.body.data).to.have.property('token');
         expect(res.body.data).to.be.an('object');
         done();
       });
@@ -83,7 +82,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if name contains a digit', (done) => {
     chai.request(app)
-      .post('api/v1/user/auth/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongName)
       .end((err, res) => {
@@ -96,7 +95,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if phone number is not 11 digits', (done) => {
     chai.request(app)
-      .post('api/v1/user/auth/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongPhoneNumber)
       .end((err, res) => {
@@ -122,7 +121,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if passwords do not match', (done) => {
     chai.request(app)
-      .post('api/v1/user/auth/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithNonMatchingPasswords)
       .end((err, res) => {
