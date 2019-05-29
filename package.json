@@ -4,7 +4,7 @@
   "description": "Auto Mart is an online marketplace for automobiles of diverse makes, model or body type where users can sell their cars or buy from trusted dealerships or private sellers. ",
   "main": "src/index.js",
   "scripts": {
-    "test": "nyc ./node_modules/.bin/mocha src/test --require @babel/register --exit --no-timeouts",
+    "test": "cross-env NODE_ENV=test nyc mocha src/test --exit --no-timeouts",
     "clean:build": "rm -R dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel src --out-dir dist --source-maps",
@@ -28,6 +28,17 @@
     "url": "https://github.com/OluwatomisinLalude/Auto-Mart/issues"
   },
   "homepage": "https://github.com/OluwatomisinLalude/Auto-Mart#readme",
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -48,6 +59,7 @@
     "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
