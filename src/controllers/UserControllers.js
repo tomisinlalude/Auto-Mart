@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-const-assign */
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -16,22 +18,29 @@ class UserControllers {
   static createUser(req, res) {
     try {
       const {
-        userName, phoneNumber, email, password,
+        firstName, lastName, phoneNumber, email, password, address, isAdmin,
       } = req.body;
       const user = {
-        userName, phoneNumber, email, password,
+        firstName, lastName, phoneNumber, email, password, address, isAdmin,
       };
+      const token = generateToken(
+        {
+          id: user.id, firstName, lastName, phoneNumber, email, password, address, isAdmin,
+        },
+      );
       insertUser(user);
       res.status(200).json({
         success: true,
         message: 'User has been created',
         data: {
-          // id,
-          userName,
+          token,
+          firstName,
+          lastName,
           phoneNumber,
           email,
-          createdOn: Date.now(),
-          updatedOn: Date.now(),
+          password,
+          address,
+          isAdmin,
         },
       });
     } catch (err) {

@@ -1,11 +1,12 @@
+/* eslint-disable linebreak-style */
 class UserMiddlewares {
-  static validateUsername(req, res, next) {
-    const { userName } = req.body;
+  static validateName(req, res, next) {
+    const { firstName, lastName } = req.body;
     const regex = /\d+/;
-    if (regex.test(userName)) {
+    if (regex.test(firstName, lastName)) {
       return res.status(400).json({
         success: false,
-        message: 'You cannot use digits in your username',
+        message: 'You cannot use digits in your name',
       });
     }
     return next();
@@ -27,7 +28,7 @@ class UserMiddlewares {
     if (password.length < 6) {
       return res.status(400).json({
         success: false,
-        message: 'Your password must be more than 6 characters in length',
+        message: 'Your password must be more than 6 characters',
       });
     }
     if (password !== confirmPassword) {

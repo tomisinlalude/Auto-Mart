@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable prefer-destructuring */
 import chaiHttp from 'chai-http';
 import chai from 'chai';
@@ -8,76 +9,93 @@ chai.use(chaiHttp);
 
 const expect = chai.expect;
 const userCredentials = {
-  userName: 'tomisinlalude',
-  phoneNumber: '08154332954',
-  email: 'oluwatomisin1605@gmail.com',
-  password: 'oyinda5_',
-  confirmPassword: 'oyinda5_',
+  token: '',
+  email: 'johndoe@mail.com',
+  firstName: 'John',
+  lastName: 'Doe',
+  password: 'password',
+  confirmPassword: 'password',
+  phoneNumber: '08012345678',
+  address: 'Birrel Avenue, Yaba, Lagos',
+  isAdmin: false,
 };
 
-const userCredentialsWithWrongUsername = {
-  userName: 'tomis9',
-  phoneNumber: '08154332954',
-  email: 'oluwatomisin1605@gmail.com',
-  password: 'oyinda5_',
-  confirmPassword: 'oyinda5_',
+const userCredentialsWithWrongName = {
+  email: 'johndoe@mail.com',
+  firstName: 'John9',
+  lastName: 'Doe',
+  password: 'password',
+  confirmPassword: 'password',
+  phoneNumber: '08012345678',
+  address: 'Birrel Avenue, Yaba, Lagos',
+  isAdmin: false,
 };
 
 const userCredentialsWithWrongPhoneNumber = {
-  userName: 'tomisin',
-  phoneNumber: '081543329',
-  email: 'oluwatomisin1605@gmail.com',
-  password: 'oyinda5_',
-  confirmPassword: 'oyinda5_',
+  email: 'johndoe@mail.com',
+  firstName: 'John',
+  lastName: 'Doe',
+  password: 'password',
+  confirmPassword: 'password',
+  phoneNumber: '080123',
+  address: 'Birrel Avenue, Yaba, Lagos',
+  isAdmin: false,
 };
 
 const userCredentialsWithWrongPassword = {
-  userName: 'tomisinlalude',
-  phoneNumber: '08154332954',
-  email: 'oluwatomisin1605@gmail.com',
-  password: 'oyi',
-  confirmPassword: 'oyi',
+  email: 'johndoe@mail.com',
+  firstName: 'John',
+  lastName: 'Doe',
+  password: 'pass',
+  confirmPassword: 'password',
+  phoneNumber: '08012345678',
+  address: 'Birrel Avenue, Yaba, Lagos',
+  isAdmin: false,
 };
 
 const userCredentialsWithNonMatchingPasswords = {
-  userName: 'tomisinlalude',
-  phoneNumber: '08154332954',
-  email: 'oluwatomisin1605@gmail.com',
-  password: 'oyiqwertyui',
-  confirmPassword: 'oyi',
+  email: 'johndoe@mail.com',
+  firstName: 'John',
+  lastName: 'Doe',
+  password: 'password',
+  confirmPassword: 'pass',
+  phoneNumber: '08012345678',
+  address: 'Birrel Avenue, Yaba, Lagos',
+  isAdmin: false,
 };
 
 describe('/POST user', () => {
   it('POST a new user', (done) => {
     chai.request(app)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentials)
       .end((err, res) => {
         expect(res.status).to.eql(200);
         expect(res.body.success).to.eql(true);
         expect(res.body.message).to.eql('User has been created');
+        expect(res.body.data).to.have.property('token');
         expect(res.body.data).to.be.an('object');
         done();
       });
   });
 
-  it('should throw a 400 error if username contains a digit', (done) => {
+  it('should throw a 400 error if name contains a digit', (done) => {
     chai.request(app)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
-      .send(userCredentialsWithWrongUsername)
+      .send(userCredentialsWithWrongName)
       .end((err, res) => {
         expect(res.status).to.eql(400);
         expect(res.body.success).to.eql(false);
-        expect(res.body.message).to.eql('You cannot use digits in your username');
+        expect(res.body.message).to.eql('You cannot use digits in your name');
         done();
       });
   });
 
   it('should throw a 400 error if phone number is not 11 digits', (done) => {
     chai.request(app)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongPhoneNumber)
       .end((err, res) => {
@@ -90,20 +108,20 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if password is less than 6 characters', (done) => {
     chai.request(app)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongPassword)
       .end((err, res) => {
         expect(res.status).to.eql(400);
         expect(res.body.success).to.eql(false);
-        expect(res.body.message).to.eql('Your password must be more than 6 characters in length');
+        expect(res.body.message).to.eql('Your password must be more than 6 characters');
         done();
       });
   });
 
   it('should throw a 400 error if passwords do not match', (done) => {
     chai.request(app)
-      .post('/api/v1/user/signup')
+      .post('/api/v1/user/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithNonMatchingPasswords)
       .end((err, res) => {
