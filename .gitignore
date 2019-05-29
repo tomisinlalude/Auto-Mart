@@ -1,4 +1,12 @@
+# Dependencies
 /node_modules
+
+# Environment variables
 .env
+
+# Testing
 .nyc_output
-coverage
+/coverage
+
+# Production
+/dist
