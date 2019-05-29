@@ -11,5 +11,8 @@ cache: npm
 script:
   - nyc --reporter=lcov npm run test
 
-after-script:
-  npm run coverage
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script: npm run coverage
