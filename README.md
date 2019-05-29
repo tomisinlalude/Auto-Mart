@@ -1,5 +1,5 @@
 
-# Auto-Mart [![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart) [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+# Auto-Mart [![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart) [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/OluwatomisinLalude/Auto-Mart/maintainability)
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type where users can sell their cars or buy from trusted dealerships or private sellers. 
 
