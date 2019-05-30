@@ -19,7 +19,7 @@ UserRouter.post('/auth/signup',
 UserRouter.post('/auth/signin',
   UserControllers.userLogin);
 
-UserRouter.post('/postAd',
+UserRouter.post('/car/',
   // CarMiddlewares.checkAd,
   CarControllers.createAd);
 

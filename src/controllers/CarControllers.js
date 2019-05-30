@@ -3,7 +3,7 @@
 
 import dotenv from 'dotenv';
 
-import { Cars } from '../database/models/Models';
+import { Cars, UserDb } from '../database/models/Models';
 
 dotenv.config();
 
@@ -13,21 +13,32 @@ class CarControllers {
   static createAd(req, res) {
     try {
       const {
-        make, model, manufacturer, state, price,
+        owner, state, status, make, model, manufacturer, price, bodyType, createdOn,
       } = req.body;
       const car = {
-        make, model, manufacturer, state, price,
+        state, status, make, model, manufacturer, price, bodyType,
       };
+      const checkOwner = UserDb.find(user => owner === user.id);
+      if (!checkOwner) {
+        return res.status(400).json({
+          success: false,
+          message: 'User does not have an account',
+        });
+      }
       addCar(car);
-      res.status(200).json({
+      res.status(201).json({
         success: true,
         message: 'Advert post successfully created',
         data: {
+          owner,
+          state,
+          status,
           make,
           model,
           manufacturer,
-          state,
           price,
+          bodyType,
+          createdOn,
         },
       });
     } catch (err) {

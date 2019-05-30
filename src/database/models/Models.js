@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable radix */
 export const UserDb = [
   {
     id: 1,
@@ -15,11 +16,15 @@ export const UserDb = [
 ];
 export const carDb = [
   {
+    owner: 'id',
+    state: 'New',
+    status: 'Available',
     make: 'Dodge Viper Acura NSX',
     model: '2017',
     manufacturer: 'Chrysler Corporation',
-    state: 'New',
-    price: '15000000',
+    price: parseInt('15000000'),
+    bodyType: 'Truck',
+    createdOn: Date.now(),
   },
 ];
 export class Users {
