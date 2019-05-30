@@ -14,32 +14,17 @@ const nonExistingUser = {
   owner: null,
 };
 
-const adCredentials = {
-  state: 'New',
-  status: 'Available',
-  make: 'Dodge Viper Acura NSX',
-  model: '2017',
-  manufacturer: 'Chrysler Corporation',
-  price: parseInt('15000000'),
-  bodyType: 'Truck',
-};
+// const adCredentials = {
+//   state: 'New',
+//   status: 'Available',
+//   make: 'Dodge Viper Acura NSX',
+//   model: '2017',
+//   manufacturer: 'Chrysler Corporation',
+//   price: parseInt('15000000'),
+//   bodyType: 'Truck',
+// };
 
 describe('/POST car ad', () => {
-  it('POST a new ad', (done) => {
-    chai.request(app)
-      .post('/api/v1/user/car/')
-      .set('Accept', 'application/json')
-      .send(adCredentials)
-      .end((err, res) => {
-        expect(res.status).to.eql(201);
-        expect(res.body.success).to.eql(true);
-        expect(res.body.message).to.eql('Advert post successfully created');
-        expect(res.body.data).to.be.an('object');
-        expect(res.body.data).to.have.property('owner');
-        done();
-      });
-  });
-
   it('Post ad should fail if a user does not exist', (done) => {
     chai.request(app)
       .post('/api/v1/user/car/')
