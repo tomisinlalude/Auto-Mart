@@ -16,7 +16,7 @@ UserRouter.post('/auth/signup',
   UserMiddlewares.validatePassword,
   UserControllers.createUser);
 
-UserRouter.post('/signin',
+UserRouter.post('/auth/signin',
   UserControllers.userLogin);
 
 UserRouter.post('/postAd',

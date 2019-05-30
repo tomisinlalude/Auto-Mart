@@ -19,7 +19,7 @@ export const carDb = [
     model: '2017',
     manufacturer: 'Chrysler Corporation',
     state: 'New',
-    price: 'N15,000,000',
+    price: '15000000',
   },
 ];
 export class Users {
