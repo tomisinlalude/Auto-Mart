@@ -54,8 +54,11 @@ class UserControllers {
 
   static userLogin(req, res) {
     try {
-      const { email, password } = req.body;
-      const returningUser = UserDb.find(user => user.email === email && user.password === password);
+      const {
+        firstName, lastName, email, password,
+      } = req.body;
+      // eslint-disable-next-line max-len
+      const returningUser = UserDb.find(user => user.firstName === firstName && user.lastName === lastName && user.email === email && user.password === password);
       if (!returningUser) {
         return res.status(404).json({
           success: false,
@@ -63,12 +66,20 @@ class UserControllers {
         });
       }
       const token = generateToken(
-        { id: returningUser.id, email, username: returningUser.username },
+        {
+          id: returningUser.id, firstName, lastName, email, password,
+        },
       );
       return res.status(201).json({
         success: true,
         message: 'User has been logged in',
-        token,
+        data: {
+          token,
+          firstName,
+          lastName,
+          email,
+          password,
+        },
       });
     } catch (err) {
       res.status(500).json({
