@@ -1,7 +1,10 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-const-assign */
+/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-import { Users, UserDb } from '../database/models/Users';
+import { Users, UserDb } from '../database/models/Models';
 
 dotenv.config();
 
@@ -9,28 +12,35 @@ const secret = process.env.SECRET_KEY;
 
 const generateToken = payload => jwt.sign(payload, secret, { expiresIn: '240h' });
 
-const { insertUser, login } = Users;
+const { insertUser } = Users;
 
 class UserControllers {
   static createUser(req, res) {
     try {
       const {
-        userName, phoneNumber, email, password,
+        firstName, lastName, phoneNumber, email, password, address, isAdmin,
       } = req.body;
       const user = {
-        userName, phoneNumber, email, password,
+        firstName, lastName, phoneNumber, email, password, address, isAdmin,
       };
+      const token = generateToken(
+        {
+          id: user.id, firstName, lastName, phoneNumber, email, password, address, isAdmin,
+        },
+      );
       insertUser(user);
       res.status(200).json({
         success: true,
         message: 'User has been created',
         data: {
-          // id,
-          userName,
+          token,
+          firstName,
+          lastName,
           phoneNumber,
           email,
-          createdOn: Date.now(),
-          updatedOn: Date.now(),
+          password,
+          address,
+          isAdmin,
         },
       });
     } catch (err) {
@@ -45,14 +55,16 @@ class UserControllers {
   static userLogin(req, res) {
     try {
       const { email, password } = req.body;
-      const user = UserDb.find(user => user.email === email && user.password === password);
-      if (!user) {
+      const returningUser = UserDb.find(user => user.email === email && user.password === password);
+      if (!returningUser) {
         return res.status(404).json({
           success: false,
           message: 'User does not exist',
         });
       }
-      const token = generateToken({ id: user.id, email, username: user.username });
+      const token = generateToken(
+        { id: returningUser.id, email, username: returningUser.username },
+      );
       return res.status(201).json({
         success: true,
         message: 'User has been logged in',

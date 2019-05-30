@@ -1,3 +1,15 @@
+# Dependencies
 /node_modules
+
+# Environment variables
 .env
+
+# Testing
 .nyc_output
+/coverage
+
+# Production
+/dist
+
+# Micellaneous
+.vscode

@@ -8,8 +8,5 @@ install:
 
 cache: npm
 
-script:
-  - nyc --reporter=lcov npm run test
-
-after-script:
+after-success:
   npm run coverage

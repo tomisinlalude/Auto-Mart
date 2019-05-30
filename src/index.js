@@ -1,10 +1,11 @@
+/* eslint-disable linebreak-style */
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-import UserRoute from './routes/UserRoute';
+import UserRoute from './routes/route';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,8 +22,6 @@ app.use(morgan('dev'));
 
 app.use('/api/v1/user', UserRoute);
 
-app.listen(port, () => {
-  console.log(`server running on port ${port}`);
-});
+app.listen(port, () => `server running on port ${port}`);
 
 export default app;
