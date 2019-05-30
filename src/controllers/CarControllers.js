@@ -18,13 +18,6 @@ class CarControllers {
       const car = {
         state, status, make, model, manufacturer, price, bodyType,
       };
-      const checkOwner = UserDb.find(user => owner === user.id);
-      if (!checkOwner) {
-        return res.status(400).json({
-          success: false,
-          message: 'User does not have an account',
-        });
-      }
       addCar(car);
       res.status(201).json({
         success: true,
@@ -41,6 +34,13 @@ class CarControllers {
           createdOn,
         },
       });
+      const checkOwner = UserDb.find(user => owner === user.id);
+      if (!checkOwner) {
+        // return res.status(400).json({
+        //   success: false,
+        //   message: 'User does not have an account',
+        // });
+      }
     } catch (err) {
       res.status(500).json({
         success: false,
