@@ -32,7 +32,7 @@ app.get('/*', (req, res) => res.sendFile(resolve(__dirname, '../public/index.htm
 app.use('/api/v1/user', UserRoute);
 
 // eslint-disable-next-line consistent-return
-app.post('/upload', multerUploads, (req, res) => {
+app.post('/api/v1/user/upload', multerUploads, (req, res) => {
   if (req.file) {
     const file = dataUri(req).content;
     return uploader.upload(file).then((result) => {
