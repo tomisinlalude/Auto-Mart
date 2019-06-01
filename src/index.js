@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({
 app.use(morgan('dev'));
 
 app.use('*', cloudinaryConfig);
-app.get('/*', (req, res) => res.sendFile(resolve(__dirname, '../public/index.html')));
 
 app.use('/api/v1/user', UserRoute);
 
