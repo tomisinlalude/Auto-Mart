@@ -35,25 +35,51 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
  4. Run  `npm run:start:dev` to start the server on a local host
  5. Test the routes with [Postman](https://www.getpostman.com/)
  
- # Dependencies
+ ## Dependencies
+
+| Name | Version |
+| ----------- | ----------- |
+| bcrypt | 3.x |
+| body-parser | 1.x |
+| cloudinary | 1.x |
+| cors | 2.x |
+| datauri | 2.x |
+| debug | 4.x |
+| dotenv | 8.x |
+| express | 4.x |
+| jsonwebtoken | 8.x |
+| morgan | 1.x |
+| multer | 1.x |
+| multer-storage-cloudinary | 2.x |
+
+## Development Dependencies
+
+| Name | Version |
+| ----------- | ----------- |
+| @babel/cli | 7.x |
+| @babel/core | 7.x |
+| @babel/node | 7.x |
+| @babel/polyfill | 7.x |
+| @babel/preset-env | 7.x |
+| @babel/register | 7.x |
+| babel-plugin-istanbul | 5.x |
+| chai | 4.x |
+| chai-http | 4.x |
+| coveralls | 3.x |
+| cross-env | 5.x |
+| eslint | 5.x |
+| eslint-config-airbnb-base | 13.x |
+| eslint-plugin-import | 2.x |
+| eslint-plugin-mocha | 5.x |
+| mocha | 6.x |
+| mocha-lcov-reporter | 1.x |
+| nodemon | 1.x |
+| nyc | 14.x |
+
+## API Routes
 
 | Syntax | Description |
 | ----------- | ----------- |
 | Header | Title |
-| Paragraph | Text |
-
-# Development Dependencies
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-# API Routes
-
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
 
 
