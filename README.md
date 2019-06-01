@@ -21,8 +21,39 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
  - Admin can view all posted ads whether sold or unsold. 
  - User can ​flag/report​ a posted AD as fraudulent.  
  
- # Installation/Getting Started
+ # Getting Started
  
  Below are instructions to kick start AutoMart in your local server.
  
  **First off, you must have node/npm installed. Install the latest node version [here](https://nodejs.org/en/download/) Not to worry, the npm package comes along with the node package**
+ 
+ # Installation
+ 
+ 1. Clone this repository by running this on your terminal: `git clone https://github.com/OluwatomisinLalude/Auto-Mart.git`
+ 2. Navigate to the project's directory with: `cd Auto-MArt`
+ 3. Run `npm install` to install dependencies
+ 4. Run  `npm run:start:dev` to start the server on a local host
+ 5. Test the routes with [Postman](https://www.getpostman.com/)
+ 
+ # Dependencies
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+# Development Dependencies
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+# API Routes
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+
