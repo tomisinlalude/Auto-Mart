@@ -1,7 +1,9 @@
+![AutoMart Logo](/ui/images/autoMart-logo.png)
 
-# Auto-Mart [![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart) [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/OluwatomisinLalude/Auto-Mart/maintainability)
 
-Auto Mart is an online marketplace for automobiles of diverse makes, model or body type where users can sell their cars or buy from trusted dealerships or private sellers. 
+# AutoMart [![Build Status](https://travis-ci.org/OluwatomisinLalude/Auto-Mart.svg?branch=develop)](https://travis-ci.org/OluwatomisinLalude/Auto-Mart) [![Coverage Status](https://coveralls.io/repos/github/OluwatomisinLalude/Auto-Mart/badge.svg)](https://coveralls.io/github/OluwatomisinLalude/Auto-Mart) [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/OluwatomisinLalude/Auto-Mart/maintainability)
+
+AutoMart is an online marketplace for automobiles of diverse makes, model or body type where users can sell their cars or buy from trusted dealerships or private sellers. 
 
 ## Features
 
@@ -19,7 +21,7 @@ Auto Mart is an online marketplace for automobiles of diverse makes, model or bo
  - Admin can view all posted ads whether sold or unsold. 
  - User can ​flag/report​ a posted AD as fraudulent.  
  
- # Instructions
+ # Installation/Getting Started
  
  Below are instructions to kick start AutoMart in your local server.
  
