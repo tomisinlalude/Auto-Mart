@@ -86,4 +86,23 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
 | ----------- | ----------- |
 | Header | Title |
 
+## Developer Stack
+
+### User Interface
+
+The User Interface for this project was built with **HTML5, CSS3 and JavaScript.** [Google Fonts](https://fonts.google.com/) provided the clean and amazing fonts.
+
+### API
+
+The API consumption was built with **node.js, express and JWT (JSON web token for Authentication)**
+
+## Author
+
+Oluwatomisin Lalude
+
+## License
+
+MIT License
+
+
 
