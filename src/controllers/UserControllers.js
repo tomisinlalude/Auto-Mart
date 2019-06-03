@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 import { Users, UserDb } from '../database/models/Models';
+// import { id }  from '../database/models/Id';
 
 dotenv.config();
 
@@ -67,7 +68,7 @@ class UserControllers {
       }
       const token = generateToken(
         {
-          id: returningUser.id, firstName, lastName, email, password,
+          firstName, lastName, email, password,
         },
       );
       return res.status(201).json({

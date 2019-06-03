@@ -1,5 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable guard-for-in */
 /* eslint-disable radix */
+
 export const UserDb = [
   {
     id: 1,
@@ -14,9 +16,10 @@ export const UserDb = [
     isAdmin: false,
   },
 ];
+
 export const carDb = [
   {
-    owner: 'id',
+    owner: UserDb.firstName && UserDb.lastName,
     state: 'New',
     status: 'Available',
     make: 'Dodge Viper Acura NSX',
@@ -24,6 +27,15 @@ export const carDb = [
     manufacturer: 'Chrysler Corporation',
     price: parseInt('15000000'),
     bodyType: 'Truck',
+    createdOn: Date.now(),
+  },
+];
+export const orderDb = [
+  {
+    buyer: UserDb.firstName && UserDb.lastName,
+    car_id: 1,
+    amount: parseInt('8000000'),
+    status: 'Pending',
     createdOn: Date.now(),
   },
 ];
@@ -35,5 +47,14 @@ export class Users {
 export class Cars {
   static addCar(car) {
     return carDb.push(car);
+  }
+}
+export class Orders {
+  static addOrder(order) {
+    return orderDb.push(order);
+  }
+
+  static updatePrice(order) {
+    return orderDb.push(order);
   }
 }

@@ -23,4 +23,10 @@ UserRouter.post('/car/',
   // CarMiddlewares.checkAd,
   CarControllers.createAd);
 
+UserRouter.post('/order',
+  CarControllers.createOrder);
+
+UserRouter.patch('/order/<:order-id>/price',
+  CarControllers.updateOrderPrice);
+
 export default UserRouter;
