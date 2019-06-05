@@ -8,7 +8,6 @@ import dotenv from 'dotenv';
 import UserRoute from './routes/route';
 
 const app = express();
-const port = process.env.PORT || 3000;
 dotenv.config();
 
 app.use(cors({
@@ -20,8 +19,16 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('dev'));
 
+app.get('/', (req, res) => {
+  res.json('Hello, welcome to AutoMart');
+});
+
 app.use('/api/v1/user', UserRoute);
 
-app.listen(port, () => `server running on port ${port}`);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
+app.listen(port);
 
 export default app;
