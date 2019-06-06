@@ -25,8 +25,12 @@ UserRouter.post('/auth/signin',
 UserRouter.post('/car/',
   CarMiddlewares.validateAd,
   CarControllers.createAd,
-  CarControllers.markCarSold,
+  CarControllers.markCarAsSold,
   CarControllers.viewSpecificAd,
-  CarControllers.deleteAdRecord);
+  CarControllers.adminViewAllCars,
+  CarControllers.viewUnsoldCars,
+  CarControllers.viewUnsoldCarsWithinPriceRange,
+  CarControllers.updateCarPrice,
+  CarControllers.adminDeleteAdRecord);
 
 export default UserRouter;
