@@ -1,9 +1,14 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
+import logger from 'morgan';
 import dotenv from 'dotenv';
+import { uploader, cloudinaryConfig } from './config/cloudinaryConfig';
+import { multerUploads, dataUri } from './middlewares/Multer';
+
 
 import UserRoute from './routes/route';
 
@@ -18,9 +23,49 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
-app.use(morgan('dev'));
+app.use(logger('dev'));
+
+app.use('/', cloudinaryConfig);
+
+// // wildcard route
+// app.use('*', (req, res) => {
+//   res.status(404).json({
+//     success: 'false',
+//     message: 'Route not found',
+//     possibleCauses: [
+//       'You probably got the url wrong',
+//       'Your internet connection...',
+//       '...',
+//     ],
+//   });
+// });
 
 app.use('/api/v1/user', UserRoute);
+
+/*
+** Configure Multer and Cloudinary for image upload
+*/
+
+// eslint-disable-next-line consistent-return
+app.post('/api/v1/user/upload', multerUploads, (req, res) => {
+  if (req.file) {
+    const file = dataUri(req).content;
+    return uploader.upload(file).then((result) => {
+      const image = result.url;
+      return res.status(200).json({
+        message: 'Your image has been uploaded successfully to Cloudinary',
+        data: {
+          image,
+        },
+      });
+    }).catch(err => res.status(400).json({
+      message: 'Something went wrong while processing your request',
+      data: {
+        err,
+      },
+    }));
+  }
+});
 
 app.listen(port, () => `server running on port ${port}`);
 
