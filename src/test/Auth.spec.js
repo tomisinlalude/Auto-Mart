@@ -100,7 +100,7 @@ const nonExistingUser = {
 describe('/POST user', () => {
   it('Create a new user', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentials)
       .end((err, res) => {
@@ -115,7 +115,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if name contains a digit', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongName)
       .end((err, res) => {
@@ -128,7 +128,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if email is invalid', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongEmail)
       .end((err, res) => {
@@ -141,7 +141,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if phone number is not 11 digits', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongPhoneNumber)
       .end((err, res) => {
@@ -154,7 +154,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if password is less than 6 characters', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithWrongPassword)
       .end((err, res) => {
@@ -167,7 +167,7 @@ describe('/POST user', () => {
 
   it('should throw a 400 error if passwords do not match', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signup')
+      .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
       .send(userCredentialsWithNonMatchingPasswords)
       .end((err, res) => {
@@ -180,7 +180,7 @@ describe('/POST user', () => {
 
   it('Signin a returning user', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signin')
+      .post('/api/v1/auth/signin')
       .set('Accept', 'application/json')
       .send(returningUser)
       .end((err, res) => {
@@ -193,7 +193,7 @@ describe('/POST user', () => {
 
   it('Signin a returning user should fail if a user does not exist', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signin')
+      .post('/api/v1/auth/signin')
       .set('Accept', 'application/json')
       .send(nonExistingUser)
       .end((err, res) => {
@@ -206,7 +206,7 @@ describe('/POST user', () => {
 
   it('Signin a returning user should fail if password is incorrect', (done) => {
     chai.request(app)
-      .post('/api/v1/user/auth/signin')
+      .post('/api/v1/auth/signin')
       .set('Accept', 'application/json')
       .send(returningUserWithWrongPassword)
       .end((err, res) => {

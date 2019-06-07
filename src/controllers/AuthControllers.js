@@ -22,7 +22,7 @@ class UserControllers {
       const {
         firstName, lastName, phoneNumber, email, password, address, isAdmin,
       } = req.body;
-      const id = userDb.length;
+      const id = userDb.length + 1;
       const user = {
         id,
         token,

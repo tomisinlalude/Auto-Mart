@@ -6,7 +6,9 @@ import dotenv from 'dotenv';
 import UserAuth from '../middlewares/AuthMiddlewares';
 import AuthControllers from '../controllers/AuthControllers';
 import CarControllers from '../controllers/CarControllers';
+import OrderControllers from '../controllers/OrderControllers';
 import CarMiddlewares from '../middlewares/CarMiddlewares';
+import OrderMiddlewares from '../middlewares/OrderMiddlewares';
 // eslint-disable-next-line import/no-named-as-default
 
 dotenv.config();
@@ -26,17 +28,23 @@ UserRouter.post('/car/',
   CarMiddlewares.validateAd,
   CarControllers.createAd,
   CarControllers.markCarAsSold,
-  CarControllers.viewSpecificAd,
   CarControllers.adminViewAllCars,
-  CarControllers.viewUnsoldCars,
-  CarControllers.viewUnsoldCarsWithinPriceRange,
-  CarControllers.updateCarPrice,
-  CarControllers.adminDeleteAdRecord);
+  CarControllers.updateCarPrice);
 
 UserRouter.post('/order',
-  CarControllers.createOrder);
+  OrderMiddlewares.validateOrder,
+  OrderControllers.createOrder);
 
-UserRouter.patch('/order/<:order-id>/price',
-  CarControllers.updateOrderPrice);
+UserRouter.get('/car/',
+  CarControllers.viewSpecificAd,
+  CarControllers.viewUnsoldCars,
+  CarControllers.viewUnsoldCarsWithinPriceRange);
+
+UserRouter.patch('/order/:id/price',
+  OrderMiddlewares.updateOrderPrice,
+  OrderControllers.updateOrderPrice);
+
+UserRouter.delete('/car',
+  CarControllers.adminDeleteAdRecord);
 
 export default UserRouter;

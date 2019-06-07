@@ -17,7 +17,7 @@ class CarControllers {
       const {
         owner, state, status, make, model, manufacturer, price, bodyType,
       } = req.body;
-      const carId = carDb.length;
+      const carId = carDb.length + 1;
       const car = {
         carId,
         state: req.body.state,
@@ -67,8 +67,7 @@ class CarControllers {
       const {
         email, state, status, make, model, manufacturer, price,
       } = req.body;
-      let index;
-      const id = carDb.find(carDb[index].id + 1);
+      const id = Number(req.params.id);
       const checkStatus = carDb.filter(car => car.status === status);
       if (!checkStatus === 'sold') {
         return res.status(404).json({
@@ -105,8 +104,7 @@ class CarControllers {
       const {
         owner, state, status, make, model, manufacturer, price, bodyType,
       } = req.body;
-      let index;
-      const id = carDb.find(carDb[index].id + 1);
+      const id = Number(req.params.id);
       const specificAd = carDb.find(car => car.id === id);
       if (!specificAd) {
         return res.status(404).json({
@@ -158,14 +156,15 @@ class CarControllers {
 
   static viewUnsoldCars(req, res) {
     try {
-      const { status } = req.body;
-      const checkStatus = carDb.filter(car => car.status === status);
-      if (checkStatus === 'available') {
-        return res.status(200).json({
-          success: true,
-          message: 'Viewing unsold cars',
-        });
-      }
+      const id = Number(req.params.id);
+      carDb.forEach((car) => {
+        if (car.id === id && car.status === 'available') {
+          return res.status(200).json({
+            success: true,
+            message: 'Viewing unsold cars',
+          });
+        }
+      });
     } catch (err) {
       res.status(500).json({
         success: false,

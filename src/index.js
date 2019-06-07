@@ -26,21 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use(logger('dev'));
 
 app.use('/', cloudinaryConfig);
-
-// // wildcard route
-// app.use('*', (req, res) => {
-//   res.status(404).json({
-//     success: 'false',
-//     message: 'Route not found',
-//     possibleCauses: [
-//       'You probably got the url wrong',
-//       'Your internet connection...',
-//       '...',
-//     ],
-//   });
-// });
-
-app.use('/api/v1/user', UserRoute);
+app.use('/api/v1/', UserRoute);
 
 /*
 ** Configure Multer and Cloudinary for image upload

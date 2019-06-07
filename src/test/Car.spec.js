@@ -28,10 +28,11 @@ const carCredentials = {
 describe('Car ads', () => {
   it('Post a new ad', (done) => {
     chai.request(app)
-      .post('/api/v1/user/car/')
+      .post('/api/v1/car/')
       .set('Accept', 'application/json')
       .send(carCredentials)
       .end((err, res) => {
+        if (err) throw err;
         expect(res.status).to.eql(201);
         expect(res.body.success).to.eql(true);
         expect(res.body.message).to.eql('Advert post successfully created');
@@ -40,11 +41,11 @@ describe('Car ads', () => {
   });
 
   // it('viewing specific car ad', (done) => {
-  //   const id = 2;
   //   chai.request(app)
-  //     .get(`api/v1/user/car/${id}`)
+  //     .get('api/v1/car/')
   //     .set('Accept', 'application/json')
   //     .end((err, res) => {
+  //       if (err) throw err;
   //       expect(res.status).to.equal(200);
   //       expect(res.body.message).to.eql('Viewing car ad is successful');
   //       done();
@@ -52,10 +53,10 @@ describe('Car ads', () => {
   // });
 
   // it('delete ad record', (done) => {
-  //   const id = 2;
   //   chai.request(app)
-  //     .delete(`api/v1/car/${id}`)
+  //     .delete('api/v1/car')
   //     .end((err, res) => {
+  //       if (err) throw err;
   //       expect(res.status).to.eql(200);
   //       expect(res.body.message).to.eql('Success! This ad has been deleted');
   //       done();
