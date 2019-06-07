@@ -82,17 +82,11 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
 
 ### API Routes
 
-<<<<<<< HEAD
 | Endpoint | Route |
 | ----------- | ----------- |
 | Signup | /api/v1/user/auth/signup |
 | Signin | /api/v1/user/auth/signin |
 | Post car ad | /api/v1/user/car/ |
-=======
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
->>>>>>> cc994e773ef4c6cefa861af74cce2d63aef1d43e
 
 ## Developer Stack
 
@@ -110,11 +104,4 @@ Oluwatomisin Lalude
 
 ## License
 
-<<<<<<< HEAD
 MIT License
-=======
-MIT License
-
-
-
->>>>>>> cc994e773ef4c6cefa861af74cce2d63aef1d43e
