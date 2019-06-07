@@ -4,9 +4,8 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
+import logger from 'morgan';
 import dotenv from 'dotenv';
-import { resolve } from 'path';
 import { uploader, cloudinaryConfig } from './config/cloudinaryConfig';
 import { multerUploads, dataUri } from './middlewares/Multer';
 
@@ -24,12 +23,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
-app.use(morgan('dev'));
+app.use(logger('dev'));
 
-app.use('*', cloudinaryConfig);
-app.get('/*', (req, res) => res.sendFile(resolve(__dirname, '../public/index.html')));
+app.use('/', cloudinaryConfig);
+app.use('/api/v1/', UserRoute);
 
-app.use('/api/v1/user', UserRoute);
+/*
+** Configure Multer and Cloudinary for image upload
+*/
 
 // eslint-disable-next-line consistent-return
 app.post('/api/v1/user/upload', multerUploads, (req, res) => {
