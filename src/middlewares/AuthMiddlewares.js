@@ -1,5 +1,12 @@
 /* eslint-disable linebreak-style */
-class UserAuth {
+
+/**
+ * @class UserAuth
+ * @description Contains methods for validating each user related endpoint
+ * @exports UserAuth
+ */
+
+class AuthMiddlewares {
   static validateName(req, res, next) {
     const { firstName, lastName } = req.body;
     const regex = /\d+/;
@@ -49,6 +56,21 @@ class UserAuth {
     }
   }
 
+  static validateAddress(req, res, next) {
+    try {
+      const { address } = req.body;
+      if (address.length > 50) {
+        throw new Error();
+      }
+      return next();
+    } catch (err) {
+      return res.status(400).json({
+        success: false,
+        message: 'Address is too long',
+      });
+    }
+  }
+
   static validateEmail(req, res, next) {
     try {
       const { email } = req.body;
@@ -66,4 +88,4 @@ class UserAuth {
   }
 }
 
-export default UserAuth;
+export default AuthMiddlewares;

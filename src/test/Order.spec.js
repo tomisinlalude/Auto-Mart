@@ -6,18 +6,11 @@
 
 // import app from '../index';
 
+// import orderCredentials from './mockData/mockOrder';
+
 // chai.use(chaiHttp);
 
 // const expect = chai.expect;
-
-// const orderCredentials = {
-//   id: 1,
-//   buyer: 'Oluwatomisin Lalude',
-//   carId: 1,
-//   status: 'Pending',
-//   price: 30000000,
-//   priceOffered: 25000000,
-// };
 
 // describe('testing for orders', () => {
 //   it('create order', (done) => {
@@ -36,7 +29,7 @@
 //   it('update order price', (done) => {
 //     chai.request(app)
 //       .patch('/api/v1/order/1')
-//       .send({ priceOffered: 12020 })
+//       .send({ priceOffered: 27000000 })
 //       .end((err, res) => {
 //         if (err) throw err;
 //         expect(res.status).to.eql(200);

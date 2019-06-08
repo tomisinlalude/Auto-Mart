@@ -7,95 +7,17 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 
 import app from '../index';
+import {
+  userCredentials, userCredentialsWithWrongName, userCredentialsWithWrongEmail,
+  userCredentialsWithWrongAddress, userCredentialsWithWrongPhoneNumber,
+  userCredentialsWithWrongPassword, userCredentialsWithNonMatchingPasswords,
+  returningUser, returningUserWithWrongPassword,
+  nonExistingUser,
+} from './mockData/mockAuth';
 
 chai.use(chaiHttp);
 
 const expect = chai.expect;
-
-const userCredentials = {
-  id: 1,
-  token: 'Gtuiplmaio',
-  email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
-  password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
-  address: 'Birrel Avenue, Yaba, Lagos',
-};
-
-const userCredentialsWithWrongName = {
-  email: 'johndoe@mail.com',
-  firstName: 'John9',
-  lastName: 'Doe',
-  password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
-  address: 'Birrel Avenue, Yaba, Lagos',
-  isAdmin: false,
-};
-
-const userCredentialsWithWrongEmail = {
-  email: 'johndoemail.com',
-  firstName: 'John',
-  lastName: 'Doe',
-  password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012367980',
-  address: 'Birrel Avenue, Yaba, Lagos',
-  isAdmin: false,
-};
-
-const userCredentialsWithWrongPhoneNumber = {
-  email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
-  password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012367gt',
-  address: 'Birrel Avenue, Yaba, Lagos',
-  isAdmin: false,
-};
-
-const userCredentialsWithWrongPassword = {
-  email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
-  password: 'pass',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
-  address: 'Birrel Avenue, Yaba, Lagos',
-  isAdmin: false,
-};
-
-const userCredentialsWithNonMatchingPasswords = {
-  email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
-  password: 'password',
-  confirmPassword: 'pass',
-  phoneNumber: '08012345678',
-  address: 'Birrel Avenue, Yaba, Lagos',
-  isAdmin: false,
-};
-
-const returningUser = {
-  token: 'Gol23pBSSa',
-  email: 'johndoe@mail.com',
-  password: 'password',
-};
-
-const returningUserWithWrongPassword = {
-  email: 'johndoe@mail.com',
-  password: 'passworrd',
-};
-
-const nonExistingUser = {
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'johngdoe@mail.com',
-  password: 'password',
-};
 
 describe('/POST user', () => {
   it('Create a new user', (done) => {
@@ -135,6 +57,19 @@ describe('/POST user', () => {
         expect(res.status).to.eql(400);
         expect(res.body.success).to.eql(false);
         expect(res.body.message).to.eql('Enter a valid email address');
+        done();
+      });
+  });
+
+  it('should throw a 400 error if address is invalid', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(userCredentialsWithWrongAddress)
+      .end((err, res) => {
+        expect(res.status).to.eql(400);
+        expect(res.body.success).to.eql(false);
+        expect(res.body.message).to.eql('Address is too long');
         done();
       });
   });

@@ -137,14 +137,24 @@ class CarControllers {
     }
   }
 
-  static adminViewAllCars(req, res) {
+  static viewAllCars(req, res) {
     try {
-      if (carDb.length !== 0) {
-        return res.status(200).json({
-          success: true,
-          message: 'View all cars successfully',
-        });
-      }
+      const filter = (array, key, value) => array.filter(car => car[key] === value);
+      const {
+        status, state, maxPrice, minPrice, manufacturer, bodyType,
+      } = req.query;
+      if (status) carDb = filter(carDb, 'status', status);
+      if (state) carDb = filter(carDb, 'state', state);
+      if (maxPrice) carDb = carDb.filter(car => car.price <= Number(maxPrice));
+      if (minPrice) carDb = carDb.filter(car => car.price >= Number(minPrice));
+      if (manufacturer) carDb = filter(carDb, 'manufacturer', manufacturer);
+      if (bodyType) carDb = filter(carDb, 'bodyType', bodyType);
+      return res.status(200).json({
+        success: true,
+        message: 'Viewed all cars successfully',
+        data:
+        carDb,
+      });
     } catch (err) {
       res.status(500).json({
         success: false,
@@ -176,7 +186,7 @@ class CarControllers {
 
   static viewUnsoldCarsWithinPriceRange(req, res) {
     try {
-      const { minPrice, maxPrice } = req.body;
+      const { minPrice, maxPrice } = req.query;
       const unsoldCars = carDb.filter(car => car.status === 'available');
       if (unsoldCars.length > 0) {
         const unsoldWithPriceRange = unsoldCars.filter(
@@ -200,12 +210,16 @@ class CarControllers {
   static updateCarPrice(req, res) {
     try {
       const { price } = req.body;
-      if (price) {
-        return res.status(200).json({
-          status: 'success',
-          data: price,
-        });
-      }
+      const id = Number(req.params.id);
+      const updatePrice = (price) ? 'price' : 'status';
+      const update = (req.body.price) ? req.body.price : req.body.status;
+      carDb.forEach((car, index) => {
+        if (car.id === id) carDb[index][updatePrice] = update;
+      });
+      return res.status(200).json({
+        status: 'success',
+        data: carDb.find(element => element.id === id),
+      });
     } catch (err) {
       return res.status(500).json({
         status: 'error',

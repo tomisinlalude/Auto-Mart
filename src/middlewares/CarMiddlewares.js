@@ -15,6 +15,19 @@ class CarMiddlewares {
       });
     }
   }
+
+  static updateCarPrice(req, res, next) {
+    try {
+      if (Number(req.body.price) || req.body.status === 'Available') {
+        next();
+      } throw new Error();
+    } catch (err) {
+      res.status(200).json({
+        success: true,
+        message: 'Price of car successfully updated',
+      });
+    }
+  }
 }
 
 export default CarMiddlewares;
