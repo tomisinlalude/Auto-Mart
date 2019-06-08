@@ -10,7 +10,7 @@ import { uploader, cloudinaryConfig } from './config/cloudinaryConfig';
 import { multerUploads, dataUri } from './middlewares/Multer';
 
 
-import UserRoute from './routes/route';
+import router from './routes';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use(logger('dev'));
 
 app.use('/', cloudinaryConfig);
-app.use('/api/v1/', UserRoute);
+app.use('/api/v1/', router);
 
 /*
 ** Configure Multer and Cloudinary for image upload

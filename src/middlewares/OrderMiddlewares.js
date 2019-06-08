@@ -18,9 +18,9 @@ class OrderMiddlewares {
 
   static updateOrderPrice(req, res, next) {
     try {
-      if (!req.body.priceOffered) {
-        throw new Error();
-      } next();
+      if (req.body.priceOffered || req.body.status === 'Pending') {
+        next();
+      } throw new Error();
     } catch (err) {
       return res.status(200).json({
         success: true,
