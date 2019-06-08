@@ -82,17 +82,20 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
 
 ### API Routes
 
-<<<<<<< HEAD
-| Endpoint | Route |
-| ----------- | ----------- |
-| Signup | /api/v1/user/auth/signup |
-| Signin | /api/v1/user/auth/signin |
-| Post car ad | /api/v1/user/car/ |
-=======
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
->>>>>>> cc994e773ef4c6cefa861af74cce2d63aef1d43e
+| Endpoint | Description | HTTP method |
+| ----------- | ----------- | ----------- |
+| /api/v1/user/auth/signup | Create a user account | POST
+| /api/v1/user/auth/signin | Login a user | POST
+| /api/v1/car/ | Create a car ad | POST
+| /api/v1/car/ | View all cars | GET
+| /api/v1/car/?status=available&minValue=500000&maxValue=100000000 | View unsold cars within price range | GET
+| /api/v1/car/?status=available | View all unsold cars | GET
+| /api/v1/car/:id | View specific car ad | GET
+| /api/v1/car/:id/price | Update price of car | PATCH
+| /api/v1/car/:id/status | Mark a car as sold | PATCH
+| /api/v1/car/:id | Delete a car record | DELETE
+| /api/v1/order | Create a purchase order | POST
+| /api/v1/order/:id/price | Update the price of a purchase order | PATCH
 
 ## Developer Stack
 
@@ -106,15 +109,8 @@ The API consumption was built with **node.js, express and JWT (JSON web token fo
 
 ## Author
 
-Oluwatomisin Lalude
+[Oluwatomisin Lalude](https://www.github.com/OluwatomisinLalude)
 
 ## License
 
-<<<<<<< HEAD
 MIT License
-=======
-MIT License
-
-
-
->>>>>>> cc994e773ef4c6cefa861af74cce2d63aef1d43e
