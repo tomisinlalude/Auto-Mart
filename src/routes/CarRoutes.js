@@ -13,10 +13,10 @@ carRouter.post('/',
 carRouter.get('/',
   CarControllers.viewAllCars);
 
-carRouter.get('/status=available&&minValue=1000&&maxValue=100000000',
+carRouter.get('/?status=available&minValue=500000&maxValue=100000000',
   CarControllers.viewUnsoldCarsWithinPriceRange);
 
-carRouter.get('/status=available',
+carRouter.get('/?status=available',
   CarControllers.viewUnsoldCars);
 
 carRouter.get('/:id',
