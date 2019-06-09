@@ -11,14 +11,14 @@ class OrderMiddlewares {
     } catch (err) {
       return res.status(201).json({
         success: true,
-        message: 'Advert post successfully created',
+        message: 'Order has been successfully created',
       });
     }
   }
 
   static updateOrderPrice(req, res, next) {
     try {
-      if (req.body.priceOffered || req.body.status === 'Pending') {
+      if (req.body.priceOffered && req.body.status === 'Pending') {
         next();
       } throw new Error();
     } catch (err) {
