@@ -105,7 +105,7 @@ class CarControllers {
         owner, state, status, make, model, manufacturer, price, bodyType,
       } = req.body;
       const id = Number(req.params.id);
-      const specificAd = carDb.find(car => car.id === id);
+      const specificAd = carDb.find(car => car.carId === id);
       if (!specificAd) {
         return res.status(404).json({
           success: false,
@@ -168,7 +168,7 @@ class CarControllers {
     try {
       const id = Number(req.params.id);
       carDb.forEach((car) => {
-        if (car.id === id && car.status === 'available') {
+        if (car.carId === id && car.status === 'available') {
           return res.status(200).json({
             success: true,
             message: 'Viewing unsold cars',
@@ -217,12 +217,13 @@ class CarControllers {
         if (car.id === id) carDb[index][updatePrice] = update;
       });
       return res.status(200).json({
-        status: 'success',
+        success: true,
+        message: 'Price of car successfully updated',
         data: carDb.find(element => element.id === id),
       });
     } catch (err) {
       return res.status(500).json({
-        status: 'error',
+        success: 'false',
         message: 'Not successful',
       });
     }

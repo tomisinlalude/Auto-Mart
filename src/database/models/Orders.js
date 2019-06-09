@@ -2,7 +2,7 @@
 
 export const orderDb = [
   {
-    id: 1,
+    orderId: 1,
     buyer: 'John Doe',
     carId: 1,
     createdOn: 'Wed May 22 09:13:52 2019 UTC',
