@@ -17,8 +17,7 @@ describe('Purchase orders', () => {
     chai.request(app)
       .post('/api/v1/order')
       .send(orderCredentials)
-      .end((err, res) => {
-        if (err) throw err;
+      .end((_err, res) => {
         expect(res.status).to.eql(201);
         expect(res.body.success).to.eql(true);
         expect(res.body.message).to.eql('Order has been successfully created');
@@ -31,8 +30,7 @@ describe('Purchase orders', () => {
     chai.request(app)
       .patch(`/api/v1/order/${id}/price`)
       .send({ priceOffered: 27000000 })
-      .end((err, res) => {
-        if (err) throw err;
+      .end((_err, res) => {
         expect(res.status).to.eql(200);
         expect(res.body.success).to.eql(true);
         expect(res.body.message).to.eql('Price of order successfully updated');

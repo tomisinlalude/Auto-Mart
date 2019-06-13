@@ -15,7 +15,7 @@ class CarControllers {
   static createAd(req, res) {
     try {
       const {
-        owner, state, status, make, model, manufacturer, price, bodyType,
+        owner, state, status, make, model, manufacturer, price, bodyType, file,
       } = req.body;
       const carId = carDb.length + 1;
       const car = {
@@ -27,6 +27,7 @@ class CarControllers {
         manufacturer: req.body.manufacturer,
         price: req.body.price,
         bodyType: req.body.bodyType,
+        file: req.body.file,
         createdOn: Date.now(),
       };
       addCar(car);
@@ -43,6 +44,7 @@ class CarControllers {
           manufacturer,
           price,
           bodyType,
+          file,
           createdOn: Date.now(),
         },
       });
