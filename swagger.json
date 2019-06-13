@@ -1,0 +1,460 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "uto Mart is an online marketplace for automobiles of diverse makes, model or body type. With Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.",
+    "version" : "1.0.0",
+    "title" : "AutoMart API Version 1",
+    "contact" : {
+      "email" : "oluwatomisin1605@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "Users Auth",
+    "description" : "Authentication for users"
+  }, {
+    "name" : "Cars",
+    "description" : "Endpoints for cars"
+  }, {
+    "name": "Orders",
+    "description": "Endpoints for purchase orders"
+  }
+ ],
+  "paths" : {
+    "/auth/signup" : {
+      "post" : {
+        "tags" : [ "User Auth" ],
+        "summary" : "User signup",
+        "operationId" : "userSignup",
+        "description" : "Create a new user account",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "user",
+          "description" : "The user object",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "User has been created",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/userSignup"
+              }
+            }
+          }
+        },
+          "409" : {
+            "description" : "Email already exists"
+          },
+          "400" : {
+            "description" : "Invalid signup parameters, Password mismatch"
+          },
+        "definitions" : {
+          "User" : {
+            "type" : "object",
+            "required" : [ "email", "firstName", "lastName", "password", "confirmPassword", "phoneNumber",  "address" ],
+            "properties" : {
+              "email" : {
+                "type" : "string"
+              },
+              "firstName" : {
+                "type" : "string"
+              },
+              "lastName" : {
+                "type" : "string"
+              },
+              "password" : {
+                "type" : "string"
+              },
+              "confirmPassword" : {
+                "type" : "string"
+              },
+              "phoneNumber" : {
+                "type" : "string"
+              },
+              "address" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/signin": {
+      "post" : {
+        "tags" : [ "User Auth" ],
+        "summary" : "User signin",
+        "operationId" : "userSignin",
+        "description" : "Login an existing user",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "user",
+          "description" : "The user object",
+          "required" : true,
+          "type" : "string",
+          "schema" : {
+            "$ref" : "#/definitions/Signin"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User has been logged in"
+          },
+          "404" : {
+            "description" : "User does not exis"
+          },
+          "400" : {
+            "description" : "Incorrect password"
+          }
+        },
+        "definitions" : {
+          "User" : {
+            "type" : "object",
+            "required" : [ "email", "password" ],
+            "properties" : {
+              "email" : {
+                "type" : "string"
+              },
+              "password" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car": {
+      "post" : {
+        "tags" : [ "Cars" ],
+        "summary" : "Create a car advert",
+        "operationId" : "Adverts",
+        "description" : "Create a new car ad",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "car",
+          "description" : "The car object",
+          "required" : true,
+          "type" : "string",
+          "schema" : {
+            "$ref" : "#/definitions/createAd"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Advert post successfully created"
+          }
+        },
+        "definitions" : {
+          "User" : {
+            "type" : "object",
+            "required" : [ "owner", "state", "status", "make", "model", "manufacturer", "price", "bodyType", "file"],
+            "properties" : {
+              "owner" : {
+                "type" : "string"
+              },
+              "state" : {
+                "type" : "string"
+              },
+              "status" : {
+                "type" : "string"
+              },
+              "make" : {
+                "type" : "string",
+                "example": "Dodge Viper Acura NSX"
+              },
+              "model" : {
+                "type" : "string",
+                "example": 2017
+              },
+              "manufacturer" : {
+                "type" : "string",
+                "example": "Chrysler Corporation"
+              },
+              "price" : {
+                "type" : "number"
+              },
+              "bodyType" : {
+                "type" : "string"
+              },
+              "file": {
+                "type" : "string",
+                "format": "url",
+                "example":  "https://www.acme-corp.com"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Cars"],
+        "summary": "View cars",
+        "operationId": "View",
+        "description": "Views all cars whether sold or unsold",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "car",
+          "description" : "Object containing all cars in the database",
+          "required" : true,
+          "type" : "string",
+          "schema" : {
+            "$ref" : "#/definitions/viewAllCars"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Viewed all cars successfully"
+          }
+        }
+      }
+    },
+      "/car/?status=available&minValue=500000&maxValue=100000000" : {
+        "get": {
+          "tags": ["Cars"],
+          "summary": "View cars",
+          "operationId": "View",
+          "description": "Views only unsold cars within a price range",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing unsold cars within a price range",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/viewCarsPriceRange"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Viewed car ad is successful"
+            }
+          }
+        }     
+      },
+      "/car/?status=available" : {
+        "get": {
+          "tags": ["Cars"],
+          "summary": "View cars",
+          "operationId": "View",
+          "description": "Views all unsold cars",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing unsold cars",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/viewCarsUnsold"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Viewing unsold cars"
+            }
+          }
+        }
+      },
+      "/car/:id": {
+        "get": {
+          "tags": ["Cars"],
+          "summary": "View cars",
+          "operationId": "View",
+          "description": "Views a specific car",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing a specific car",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/viewASpecificCar"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Viewing car ad is successful"
+            }
+          }
+        }    
+      },
+      "/car/:id/price": {
+        "patch": {
+          "tags": ["Cars"],
+          "summary": "Update price of car",
+          "operationId": "Update",
+          "description": "Seller can update the price of a car",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing the updated price",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/updateCar"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Price of car successfully updated"
+            }
+          },
+          "definitions" : {
+            "User" : {
+              "type" : "object",
+              "required" : [ "price" ],
+              "properties" : {
+                "price" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/car/:id/status": {
+        "patch": {
+          "tags": ["Cars"],
+          "summary": "Mark car as sold",
+          "operationId": "Mark",
+          "description": "Seller can mark car as sold",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing the car to be marked",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/markCar"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Success! Marked as sold"
+            }
+          }
+        }    
+      },
+      "/car/:id": {
+        "delete": {
+          "tags": ["Cars"],
+          "summary": "Delete a car",
+          "operationId": "Delete",
+          "description": "Admin can delete a car from records",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "car",
+            "description" : "Object containing the car to be deleted",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/deleteCar"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Success! This ad has been deleted"
+            }
+          }
+        }  
+      },
+      "/order": {
+        "post" : {
+          "tags" : [ "Orders" ],
+          "summary" : "Create purchase orde",
+          "operationId" : "Adverts",
+          "description" : "Buyer can create a purchase order",
+          "consumes" : [ "application/json" ],
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "query",
+            "name" : "order",
+            "description" : "The order object",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/createOrder"
+            }
+          } ],
+          "responses" : {
+            "201" : {
+              "description" : "Order has been successfully created"
+            }
+          },
+          "definitions" : {
+            "User" : {
+              "type" : "object",
+              "required" : [ "buyer", "status", "price", "priceOfferred" ],
+              "properties" : {
+                "buyer" : {
+                  "type" : "string"
+                },
+                "status" : {
+                  "type" : "string"
+                },
+                "price" : {
+                  "type" : "number"
+                },
+                "priceOffered" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/order/:id/price": {
+        "patch": {
+          "tags": ["Orders"],
+          "summary": "Update price of order",
+          "operationId": "Update",
+          "description": "Buyer can update the price of a car",
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "order",
+            "description" : "Object containing the updated price",
+            "required" : true,
+            "type" : "string",
+            "schema" : {
+              "$ref" : "#/definitions/updateOrder"
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Price of order successfully updated"
+            }
+          },
+          "definitions" : {
+            "User" : {
+              "type" : "object",
+              "required" : [ "priceOffered" ],
+              "properties" : {
+                "priceOffered" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      },
+  "host" : "tomisinlalude-automart-api.herokuapp.com",
+  "basePath" : "/api/v1",
+  "schemes" : [ "https", "http" ]
+}

@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import authRouter from './AuthRoutes';
 import carRouter from './CarRoutes';
 import orderRouter from './OrderRoutes';
+import uploadRouter from './UploadRoutes';
 
 dotenv.config();
 const router = express.Router();
@@ -14,5 +15,6 @@ const router = express.Router();
 router.use('/auth', authRouter);
 router.use('/car', carRouter);
 router.use('/order', orderRouter);
+router.use('/uploads', uploadRouter);
 
 export default router;

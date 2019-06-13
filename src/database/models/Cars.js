@@ -12,6 +12,7 @@ export const carDb = [
     price: 15000000,
     bodyType: 'Truck',
     createdOn: Date.now(),
+    imageUrl: '../ui/images/adlist1.png',
   },
   {
     carId: 2,
