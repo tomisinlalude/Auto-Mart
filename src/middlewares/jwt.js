@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 import jwt from 'jsonwebtoken';
-export default checkToken;
 
 const secretKey = process.env.SECRET_KEY;
 const generateToken = payload => jwt.sign(payload, secretKey, { expiresIn: '240h' });
@@ -27,4 +26,4 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-const checkToken = { generateToken, verifyToken };
+export { generateToken, verifyToken };
