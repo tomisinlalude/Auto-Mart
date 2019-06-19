@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 
 const carTable = `
-  CREATE TABLE IF NOT EXISTS cars(
+  CREATE TABLE IF NOT EXISTS Cars(
     carId SERIAL PRIMARY KEY,
     owner VARCHAR NOT NULL,
     createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -15,4 +15,6 @@ const carTable = `
   );
 `;
 
-export default carTable;
+const dropCarTable = 'DROP TABLE IF EXISTS Cars CASCADE;';
+
+export { carTable, dropCarTable };

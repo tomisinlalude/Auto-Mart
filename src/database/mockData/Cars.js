@@ -1,8 +1,7 @@
 /* eslint-disable linebreak-style */
 
-export const carDb = [
+const carDb = [
   {
-    carId: 1,
     owner: 'Oluwatomisin Lalude',
     state: 'New',
     status: 'Available',
@@ -11,11 +10,20 @@ export const carDb = [
     manufacturer: 'Chrysler Corporation',
     price: 15000000,
     bodyType: 'Truck',
-    createdOn: Date.now(),
     imageUrl: '../ui/images/adlist1.png',
   },
   {
-    carId: 2,
+    owner: 'Dara Abijo',
+    state: 'Used',
+    status: 'Sold',
+    make: 'Dodge Viper Acura NSX',
+    model: '2017',
+    manufacturer: 'Chrysler Corporation',
+    price: 15000000,
+    bodyType: 'Car',
+    imageUrl: '../ui/images/adlist2.png',
+  },
+  {
     owner: 'John Doe',
     state: 'Used',
     status: 'Sold',
@@ -24,12 +32,14 @@ export const carDb = [
     manufacturer: 'Chrysler Corporation',
     price: 15000000,
     bodyType: 'Car',
-    createdOn: Date.now(),
+    imageUrl: '../ui/images/adlist3.png',
   },
 ];
 
-export class Cars {
-  static addCar(car) {
+class Cars {
+  static insertCar(car) {
     return carDb.push(car);
   }
 }
+
+export { carDb, Cars };

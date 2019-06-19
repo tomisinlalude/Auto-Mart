@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const orderTable = `CREATE TABLE IF NOT EXISTS orders(
+const orderTable = `CREATE TABLE IF NOT EXISTS Orders(
   id SERIAL PRIMARY KEY,
   buyer VARCHAR NOT NULL,
   carId INTEGER REFERENCES car (id),
@@ -9,4 +9,6 @@ const orderTable = `CREATE TABLE IF NOT EXISTS orders(
 );
 `;
 
-export default orderTable;
+const dropOrderTable = 'DROP TABLE IF EXISTS Orders CASCADE;';
+
+export { orderTable, dropOrderTable };
