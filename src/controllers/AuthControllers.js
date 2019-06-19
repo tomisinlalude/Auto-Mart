@@ -1,42 +1,34 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-const-assign */
+/* eslint-disable no-unused-vars */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable consistent-return */
 
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import regeneratorRuntime from 'regenerator-runtime';
 
-import { userDb, Users } from '../database/models/Users';
-
-dotenv.config();
-
-const secretKey = process.env.SECRET_KEY;
-
-const generateToken = payload => jwt.sign(payload, secretKey, { expiresIn: '240h' });
+import { Users } from '../database/mockData/Users';
+import { generateToken } from '../middlewares/jwt';
+import authModel from '../database/models/authModel';
 
 const { insertUser } = Users;
 
-class UserControllers {
-  static createUser(req, res) {
+class AuthControllers {
+  static async createUser(req, res) {
     try {
       const {
-        firstName, lastName, phoneNumber, email, password, address, isAdmin,
+        firstName, lastName, email, password, confirmPassword, phoneNumber, address,
       } = req.body;
-      const id = userDb.length + 1;
-      const user = {
-        id,
-        token,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        phoneNumber: req.body.phoneNumber,
-        email: req.body.email,
-        password: req.body.password,
-        address: req.body.address,
-        isAdmin,
-      };
+      const existingUser = await authModel.checkAll(email);
+      if (existingUser) {
+        return res.status(400).json({
+          success: false,
+          message: 'This email has been used. Kindly login instead.',
+        });
+      }
+      const user = await authModel
+        .createUser(firstName, lastName, email, password, confirmPassword, phoneNumber, address);
       const token = generateToken(
         {
-          id: user.id, firstName, lastName, phoneNumber, email, password, address, isAdmin,
+          id: user.id, email,
         },
       );
       insertUser(user);
@@ -44,6 +36,7 @@ class UserControllers {
         success: true,
         message: 'User has been created',
         data: {
+          id: user.id,
           token,
           firstName,
           lastName,
@@ -51,7 +44,6 @@ class UserControllers {
           email,
           password,
           address,
-          isAdmin,
         },
       });
     } catch (err) {
@@ -63,16 +55,16 @@ class UserControllers {
     }
   }
 
-  static userLogin(req, res) {
+  static async userLogin(req, res) {
     try {
       const {
         email, password,
       } = req.body;
-      const returningUser = userDb.find(user => user.email === email && user.password === password);
+      const returningUser = await authModel.checkAll(email);
       if (!returningUser) {
         return res.status(404).json({
           success: false,
-          message: 'User does not exist',
+          message: 'User does not exist. Sign up',
         });
       }
       if (returningUser.password !== req.body.password) {
@@ -83,7 +75,7 @@ class UserControllers {
       }
       const token = generateToken(
         {
-          id: returningUser.id, email, password,
+          id: returningUser.id, email,
         },
       );
       return res.status(200).json({
@@ -105,4 +97,4 @@ class UserControllers {
   }
 }
 
-export default UserControllers;
+export default AuthControllers;

@@ -2,28 +2,23 @@
 import jwt from 'jsonwebtoken';
 
 const secretKey = process.env.SECRET_KEY;
-const generateToken = payload => jwt.sign(payload, secretKey, { expiresIn: '240h' });
-const verifyToken = (req, res, next) => {
-  let token = generateToken({
-    id, email,
-  });
+export const generateToken = payload => jwt.sign(payload, secretKey, { expiresIn: '240h' });
+export const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization;
   if (!token) {
     return res.status(400).json({
       success: false,
-      message: "No token provided for this action",
+      message: 'No token provided for this action',
     });
-  {
-    try {
-      const decoded = jwt.verify(token, secretKey);
-      req.body.id = decoded.id;
-      return next();
-    } catch (err) {
-      return res.status(400).json({
-        success: false,
-        message: "This token is not valid",
-      });
-    }
+  }
+  try {
+    const release = jwt.verify(token, secretKey);
+    req.body.id = release.id;
+    return next();
+  } catch (err) {
+    return res.status(400).json({
+      success: false,
+      message: 'This token is not valid',
+    });
   }
 };
-
-export { generateToken, verifyToken };

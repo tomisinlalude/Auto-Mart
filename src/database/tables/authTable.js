@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
-const userTable = `
-  CREATE TABLE IF NOT EXISTS users(
+const authTable = `
+  CREATE TABLE IF NOT EXISTS Users(
     id SERIAL PRIMARY KEY,
     token VARCHAR NOT NULL,
     firstName VARCHAR (50) NOT NULL,
@@ -13,6 +13,6 @@ const userTable = `
   );
 `;
 
-const dropUserTable = 'DROP TABLE IF EXISTS user CASCADE;';
+const dropAuthTable = 'DROP TABLE IF EXISTS Users CASCADE;';
 
-export { userTable, dropUserTable };
+export { authTable, dropAuthTable };
