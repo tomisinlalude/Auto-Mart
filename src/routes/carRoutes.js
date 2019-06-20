@@ -26,4 +26,7 @@ carRouter.get('/?status=available&minValue=500000&maxValue=100000000',
 carRouter.get('/',
   CarControllers.viewAllCars);
 
+carRouter.delete('/:id',
+  CarControllers.adminDeleteAdRecord);
+
 export default carRouter;
