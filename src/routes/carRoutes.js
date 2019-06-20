@@ -23,4 +23,7 @@ carRouter.get('/?status=available',
 carRouter.get('/?status=available&minValue=500000&maxValue=100000000',
   CarControllers.viewUnsoldCarsWithinPriceRange);
 
+carRouter.get('/',
+  CarControllers.viewAllCars);
+
 export default carRouter;
