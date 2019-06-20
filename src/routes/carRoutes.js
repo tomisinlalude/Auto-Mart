@@ -29,4 +29,7 @@ carRouter.get('/',
 carRouter.delete('/:id',
   CarControllers.adminDeleteAdRecord);
 
+carRouter.patch('/:id/status',
+  CarControllers.markCarAsSold);
+
 export default carRouter;

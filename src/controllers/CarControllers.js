@@ -184,6 +184,43 @@ class CarControllers {
       });
     }
   }
+
+  static async markCarAsSold(req, res) {
+    try {
+      const {
+        email, state, status, make, model, manufacturer, price,
+      } = req.body;
+      const id = Number(req.params.id);
+      const checkStatus = await carModel.markAdAsSold;
+      if (checkStatus === 'sold') {
+        return res.status(404).json({
+          success: false,
+          message: 'This car has been sold',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: 'Success! Marked as sold',
+        data: {
+          id,
+          email,
+          manufacturer,
+          make,
+          model,
+          status,
+          state,
+          price,
+          createdOn: Date.now(),
+        },
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: 'Not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default CarControllers;
