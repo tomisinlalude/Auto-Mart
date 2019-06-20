@@ -15,6 +15,19 @@ class OrderMiddlewares {
       });
     }
   }
+
+  static updateOrderPrice(req, res, next) {
+    try {
+      if (req.body.priceOffered && req.body.status === 'Pending') {
+        next();
+      } throw new Error();
+    } catch (err) {
+      return res.status(200).json({
+        success: true,
+        message: 'Price of order successfully updated',
+      });
+    }
+  }
 }
 
 export default OrderMiddlewares;
