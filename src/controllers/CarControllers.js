@@ -161,6 +161,29 @@ class CarControllers {
       });
     }
   }
+
+  static async adminDeleteAdRecord(req, res) {
+    try {
+      const isAdmin = false;
+      const deleteAd = await carModel.deleteAd();
+      if (!isAdmin && deleteAd) {
+        return res.status(200).json({
+          success: true,
+          message: 'Success! This ad has been deleted',
+        });
+      }
+      return res.status(404).json({
+        success: false,
+        message: 'Car ad not found',
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: 'Not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default CarControllers;
