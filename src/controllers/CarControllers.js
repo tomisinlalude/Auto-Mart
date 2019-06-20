@@ -141,6 +141,26 @@ class CarControllers {
       });
     }
   }
+
+  static async viewAllCars(req, res) {
+    try {
+      const allCars = await carModel.allCars();
+      if (allCars) {
+        return res.status(200).json({
+          success: true,
+          message: 'Viewed all cars successfully',
+          data:
+            allCars,
+        });
+      }
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: 'Not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default CarControllers;
