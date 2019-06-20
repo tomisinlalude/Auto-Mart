@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 
-import pool from '../index';
+import client from '../../config/databaseConfig';
 
 class carModel {
   constructor(carTable) {
@@ -13,7 +13,7 @@ class carModel {
       text: 'SELECT * FROM userDb ORDER BY id ASC;',
       values: [firstName, lastName],
     };
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -26,7 +26,7 @@ class carModel {
       values: [owner, state, status, price, make, manufacturer, model, bodyType, imageUrl],
     };
 
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -36,7 +36,7 @@ class carModel {
       values: [carId],
     };
 
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -45,7 +45,7 @@ class carModel {
       text: 'UPDATE cars SET newPrice = $3 WHERE carId = $1 AND owner=$2 RETURNING *;',
       values: [carId, owner, newPrice],
     };
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -54,7 +54,7 @@ class carModel {
       text: 'SELECT * FROM carDb WHERE status=$3;',
       values: ['available'],
     };
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows;
   }
 
@@ -62,13 +62,13 @@ class carModel {
     const query = {
       text: 'SELECT * FROM carDb WHERE price=$4 AND price>=minPrice AND price<=maxPrice;',
     };
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows;
   }
 
   async allCars() {
     const query = 'SELECT * FROM cars;';
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows;
   }
 
@@ -78,7 +78,7 @@ class carModel {
       values: [carId, owner, 'sold'],
     };
 
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -87,7 +87,7 @@ class carModel {
       text: 'DELETE FROM cars WHERE carId=$1;',
       values: [carId],
     };
-    await pool.query(query);
+    await client.query(query);
   }
 }
 
