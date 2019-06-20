@@ -34,6 +34,24 @@ class OrderControllers {
       });
     }
   }
+
+  static async updateOrderPrice(req, res) {
+    try {
+      const updatePrice = await orderModel.updateOrderPrice;
+      if (updatePrice) {
+        res.status(200).json({
+          success: true,
+          message: 'Price of order successfully updated',
+        });
+      }
+    } catch (err) {
+      return res.status(500).json({
+        success: 'false',
+        message: 'Not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default OrderControllers;
