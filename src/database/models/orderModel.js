@@ -1,10 +1,19 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
-import pool from '../index';
+import client from '../../config/databaseConfig';
 
 class orderModel {
   constructor(orderTable) {
     this.table = orderTable;
+  }
+
+  async checkBuyer(firstName, lastName) {
+    const query = {
+      text: 'SELECT * FROM userDb ORDER BY id ASC;',
+      values: [firstName, lastName],
+    };
+    const { rows } = await client.query(query);
+    return rows[0];
   }
 
   async createOrder(buyer, carId, price, priceOffered) {
@@ -16,7 +25,7 @@ class orderModel {
       values: [buyer, carId, price, priceOffered],
     };
 
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 
@@ -28,7 +37,7 @@ class orderModel {
       values: [orderId, newPriceOffered],
     };
 
-    const { rows } = await pool.query(query);
+    const { rows } = await client.query(query);
     return rows[0];
   }
 }

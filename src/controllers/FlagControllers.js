@@ -12,8 +12,8 @@ class FlagController {
       const {
         carId, reason, description, reporter,
       } = req.body;
-      const { checkReporter } = await flagModel;
-      if (!checkReporter) {
+      req.body.reporter = await flagModel.checkReporter;
+      if (!req.body.reporter) {
         return res.status(400).json({
           success: false,
           message: 'User does not have an account',

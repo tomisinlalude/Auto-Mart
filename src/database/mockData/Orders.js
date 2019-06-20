@@ -24,4 +24,10 @@ const orderDb = [
   },
 ];
 
-export default orderDb;
+class Orders {
+  static insertOrder(order) {
+    return orderDb.push(order);
+  }
+}
+
+export { orderDb, Orders };
