@@ -10,4 +10,8 @@ carRouter.post('/',
   CarMiddlewares.validateAd,
   CarControllers.createAd);
 
+carRouter.patch('/:id/price',
+  CarMiddlewares.updateCarPrice,
+  CarControllers.updateCarPrice);
+
 export default carRouter;
