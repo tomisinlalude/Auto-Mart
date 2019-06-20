@@ -19,7 +19,7 @@ class carModel {
 
   async createAd(owner, state, status, price, make, manufacturer, model, bodyType, imageUrl) {
     const query = {
-      text: `INSERT INTO cars
+      text: `INSERT INTO carDb
             (owner, state, status, price, manufacturer, model, bodyType, imageUrl)
             VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING *;`,
@@ -42,7 +42,7 @@ class carModel {
 
   async updateCarPrice(carId, owner, newPrice) {
     const query = {
-      text: 'UPDATE cars SET newPrice = $3 WHERE carId = $1 AND owner=$2 RETURNING *;',
+      text: 'UPDATE car SET newPrice = $3 WHERE carId = $1 AND owner=$2 RETURNING *;',
       values: [carId, owner, newPrice],
     };
     const { rows } = await client.query(query);
@@ -67,14 +67,14 @@ class carModel {
   }
 
   async allCars() {
-    const query = 'SELECT * FROM cars;';
+    const query = 'SELECT * FROM carDb;';
     const { rows } = await client.query(query);
     return rows;
   }
 
   async markAdAsSold(carId, owner) {
     const query = {
-      text: ' UPDATE cars SET status = $3 WHERE carId = $1 AND owner = $2 RETURNING *;',
+      text: ' UPDATE car SET status = $3 WHERE carId = $1 AND owner = $2 RETURNING *;',
       values: [carId, owner, 'sold'],
     };
 
@@ -84,7 +84,7 @@ class carModel {
 
   async deleteAd(carId) {
     const query = {
-      text: 'DELETE FROM cars WHERE carId=$1;',
+      text: 'DELETE FROM carDb WHERE carId=$1;',
       values: [carId],
     };
     await client.query(query);

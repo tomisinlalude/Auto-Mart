@@ -23,7 +23,7 @@ class CarControllers {
           message: 'User does not have an account',
         });
       }
-      const car = carModel.createAd(
+      const car = await carModel.createAd(
         owner,
         state,
         status,
