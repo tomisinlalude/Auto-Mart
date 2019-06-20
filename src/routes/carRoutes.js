@@ -14,4 +14,7 @@ carRouter.patch('/:id/price',
   CarMiddlewares.updateCarPrice,
   CarControllers.updateCarPrice);
 
+carRouter.get('/:id',
+  CarControllers.viewSpecificAd);
+
 export default carRouter;
