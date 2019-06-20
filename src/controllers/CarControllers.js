@@ -121,6 +121,26 @@ class CarControllers {
       });
     }
   }
+
+  static async viewUnsoldCarsWithinPriceRange(req, res) {
+    try {
+      const unsold = carModel.unsoldCarsOnly();
+      if (unsold.length > 0) {
+        const unsoldWithPriceRange = await carModel.unsoldCarsPriceRange();
+        if (unsoldWithPriceRange.length > 0) {
+          return res.status(200).json({
+            status: 'success',
+            data: unsoldWithPriceRange,
+          });
+        }
+      }
+    } catch (err) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'No cars within this price range',
+      });
+    }
+  }
 }
 
 export default CarControllers;
