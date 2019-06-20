@@ -65,6 +65,44 @@ class CarControllers {
       });
     }
   }
+
+  static async viewSpecificAd(req, res) {
+    try {
+      const {
+        owner, state, status, make, model, manufacturer, price, bodyType,
+      } = req.body;
+      const id = Number(req.params.id);
+      const specificAd = await carModel.selectSpecificCar;
+      if (!specificAd) {
+        return res.status(404).json({
+          success: false,
+          message: 'This car ad is not found',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: 'Viewing car ad is successful',
+        data: {
+          id,
+          owner,
+          state,
+          status,
+          price,
+          make,
+          model,
+          manufacturer,
+          bodyType,
+          createdOn: Date.now(),
+        },
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: 'Viewing car ad is not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default CarControllers;
