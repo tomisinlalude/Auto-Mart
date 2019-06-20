@@ -103,6 +103,24 @@ class CarControllers {
       });
     }
   }
+
+  static async viewUnsoldCars(req, res) {
+    try {
+      const unsold = await carModel.unsoldCarsOnly();
+      if (unsold) {
+        return res.status(200).json({
+          success: true,
+          message: 'Viewing unsold cars',
+        });
+      }
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        message: 'Not successful',
+        err,
+      });
+    }
+  }
 }
 
 export default CarControllers;
