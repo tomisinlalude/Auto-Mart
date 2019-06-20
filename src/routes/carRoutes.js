@@ -17,4 +17,7 @@ carRouter.patch('/:id/price',
 carRouter.get('/:id',
   CarControllers.viewSpecificAd);
 
+carRouter.get('/?status=available',
+  CarControllers.viewUnsoldCars);
+
 export default carRouter;
