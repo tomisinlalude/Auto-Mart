@@ -94,6 +94,7 @@ AutoMart is an online marketplace for automobiles of diverse makes, model or bod
 | /api/v1/car/:id/price | Update price of car | PATCH
 | /api/v1/car/:id/status | Mark a car as sold | PATCH
 | /api/v1/car/:id | Delete a car record | DELETE
+| /api/v1/flag/ | Flag a car ad as fraudulent | POST
 | /api/v1/order | Create a purchase order | POST
 | /api/v1/order/:id/price | Update the price of a purchase order | PATCH
 
@@ -106,6 +107,14 @@ The User Interface for this project was built with **HTML5, CSS3 and JavaScript.
 ### API
 
 The API consumption was built with **node.js, express and JWT (JSON web token for Authentication)**
+
+### Test Driven Development
+
+Tests are written with Mocha, Chai and Chai-Http
+
+### Linting
+
+JavaScript best coding practices are ensured with ESLint and Airbnb styling
 
 ## Author
 
