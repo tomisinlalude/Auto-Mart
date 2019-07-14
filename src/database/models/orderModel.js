@@ -1,5 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
+
+import regeneratorRuntime from 'regenerator-runtime';
+
 import client from '../../config/databaseConfig';
 
 class orderModel {
@@ -18,7 +22,7 @@ class orderModel {
 
   async createOrder(buyer, carId, price, priceOffered) {
     const query = {
-      text: `INSERT INTO orders 
+      text: `INSERT INTO orderDb
             (buyer, carId, price, priceOffered)
             VALUES ($1, $2, $3, $4)
             RETURNING *;`,

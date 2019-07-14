@@ -13,7 +13,7 @@ class CarControllers {
   static async createAd(req, res) {
     try {
       const {
-        owner, state, status, make, model, manufacturer, price, bodyType, imageUrl,
+        owner, state, status, model, manufacturer, price, body_type, image_url,
       } = req.body;
 
       const { checkOwner } = await carModel;
@@ -28,11 +28,10 @@ class CarControllers {
         state,
         status,
         price,
-        make,
         manufacturer,
         model,
-        bodyType,
-        imageUrl,
+        body_type,
+        image_url,
       );
       insertCar(car);
       res.status(201).json({
@@ -50,12 +49,15 @@ class CarControllers {
   }
 
   static async updateCarPrice(req, res) {
+    const { user_id: owner, new_price } = req.body;
+    const { car_id } = req.params;
     try {
-      const update = await carModel.updateCarPrice();
-      if (update) {
+      const updatedPrice = await carModel.updateCarPrice(car_id, owner, new_price);
+      if (updatedPrice) {
         return res.status(200).json({
           success: true,
           message: 'Price of car successfully updated',
+          data: updatedPrice,
         });
       }
     } catch (err) {
@@ -67,12 +69,9 @@ class CarControllers {
   }
 
   static async viewSpecificAd(req, res) {
+    const { car_id } = req.params;
     try {
-      const {
-        owner, state, status, make, model, manufacturer, price, bodyType,
-      } = req.body;
-      const id = Number(req.params.id);
-      const specificAd = await carModel.selectSpecificCar;
+      const specificAd = await carModel.selectSpecificCar(car_id);
       if (!specificAd) {
         return res.status(404).json({
           success: false,
@@ -82,18 +81,7 @@ class CarControllers {
       return res.status(200).json({
         success: true,
         message: 'Viewing car ad is successful',
-        data: {
-          id,
-          owner,
-          state,
-          status,
-          price,
-          make,
-          model,
-          manufacturer,
-          bodyType,
-          createdOn: Date.now(),
-        },
+        data: specificAd,
       });
     } catch (err) {
       res.status(500).json({
@@ -111,6 +99,7 @@ class CarControllers {
         return res.status(200).json({
           success: true,
           message: 'Viewing unsold cars',
+          data: unsold,
         });
       }
     } catch (err) {
@@ -186,10 +175,9 @@ class CarControllers {
   }
 
   static async markCarAsSold(req, res) {
+    const { user_id } = req.body;
+    const { car_id } = req.params;
     try {
-      const {
-        email, state, status, make, model, manufacturer, price,
-      } = req.body;
       const id = Number(req.params.id);
       const checkStatus = await carModel.markAdAsSold;
       if (checkStatus === 'sold') {
@@ -202,15 +190,12 @@ class CarControllers {
         success: true,
         message: 'Success! Marked as sold',
         data: {
-          id,
-          email,
+          car_id,
           manufacturer,
-          make,
           model,
           status,
           state,
           price,
-          createdOn: Date.now(),
         },
       });
     } catch (err) {

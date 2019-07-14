@@ -4,8 +4,8 @@
 class CarMiddlewares {
   static validateAd(req, res, next) {
     try {
-      if (!req.body.owner || !req.body.state || !req.body.make
-          || !req.body.model || !req.body.manufacturer || !req.body.price || !req.body.bodyType) {
+      if (!req.body.owner || !req.body.state || !req.body.status
+          || !req.body.model || !req.body.manufacturer || !req.body.price || !req.body.body_type) {
         throw new Error();
       } next();
     } catch (err) {
