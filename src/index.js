@@ -11,7 +11,6 @@ import { cloudinaryConfig } from './config/cloudinaryConfig';
 import router from './routes';
 
 const app = express();
-const port = process.env.PORT || 3000;
 dotenv.config();
 
 app.use(cors({
@@ -25,7 +24,16 @@ app.use(logger('dev'));
 
 app.use('/', cloudinaryConfig);
 app.use('/api/v1/', router);
+app.get('/', (req, res) => {
+  res.json('Hello, welcome to AutoMart');
+});
 
-app.listen(port, () => `server running on port ${port}`);
+app.use('/api/v1/user', UserRoute);
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
+app.listen(port);
 
 export default app;
