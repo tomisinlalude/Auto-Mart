@@ -1,16 +1,13 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable consistent-return */
 
-import Orders from '../database/mockData/Orders';
 import orderModel from '../database/models/orderModel';
-
-const { insertOrder } = Orders;
 
 class OrderControllers {
   static async createOrder(req, res) {
     try {
       const {
-        buyer, carId, status, price, priceOffered,
+        buyer, car_id, status, price, price_offered,
       } = req.body;
       req.body.buyer = await orderModel.checkBuyer;
       if (!req.body.buyer) {
@@ -19,8 +16,7 @@ class OrderControllers {
           message: 'User does not have an account',
         });
       }
-      const order = await orderModel.createOrder(buyer, carId, status, price, priceOffered);
-      insertOrder(order);
+      const order = await orderModel.createOrder(buyer, car_id, status, price, price_offered);
       return res.status(201).json({
         success: true,
         message: 'Order has been created',

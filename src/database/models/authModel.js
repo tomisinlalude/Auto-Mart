@@ -11,20 +11,20 @@ import client from '../../config/databaseConfig';
 class authModel {
   async checkAll(email) {
     const query = {
-      text: 'SELECT * FROM userDb ORDER BY id ASC;',
+      text: 'SELECT * FROM Users ORDER BY id ASC;',
       values: [email],
     };
     const { rows } = await client.query(query);
     return rows[0];
   }
 
-  async createUser(firstName, lastName, email, password, confirmPassword, phoneNumber, address) {
+  async createUser(first_name, last_name, email, password, confirm_password, address) {
     const query = {
-      text: `INSERT INTO users
-                (firstName, lastName, email, password, confirmPassword, phoneNumber, address)
+      text: `INSERT INTO Users
+                (first_name, last_name, email, password, confirm_password, address)
                 VALUES($1, $2, $3, $4, $5, $6, $7)
                 RETURNING id, firstName, lastName, email;`,
-      values: [firstName, lastName, email, password, confirmPassword, phoneNumber, address],
+      values: [first_name, last_name, email, password, confirm_password, address],
     };
 
     const { rows } = await client.query(query);

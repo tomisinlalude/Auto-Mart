@@ -3,72 +3,65 @@ export const userCredentials = {
   id: 1,
   token: 'Gtuiplmaio',
   email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos',
 };
 
 export const userCredentialsWithWrongName = {
   email: 'johndoe@mail.com',
-  firstName: 'John9',
-  lastName: 'Doe',
+  first_name: 'John9',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos',
 };
 
 export const userCredentialsWithWrongEmail = {
   email: 'johndoemail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012367980',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos',
 };
 
 export const userCredentialsWithWrongAddress = {
   email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos mdklsiehuiwhuisbhznmzma,ojqwoiwuwghsbnnmmskisweyg',
 };
 
 export const userCredentialsWithWrongPhoneNumber = {
   email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'password',
-  phoneNumber: '08012367gt',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos',
 };
 
 export const userCredentialsWithWrongPassword = {
   email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'pass',
-  confirmPassword: 'password',
-  phoneNumber: '08012345678',
+  confirm_password: 'password',
   address: 'Birrel Avenue, Yaba, Lagos',
   isAdmin: false,
 };
 
 export const userCredentialsWithNonMatchingPasswords = {
   email: 'johndoe@mail.com',
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   password: 'password',
-  confirmPassword: 'pass',
-  phoneNumber: '08012345678',
+  confirm_password: 'pass',
   address: 'Birrel Avenue, Yaba, Lagos',
   isAdmin: false,
 };
@@ -85,8 +78,8 @@ export const returningUserWithWrongPassword = {
 };
 
 export const nonExistingUser = {
-  firstName: 'John',
-  lastName: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
   email: 'johngdoe@mail.com',
   password: 'password',
 };

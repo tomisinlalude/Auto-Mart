@@ -5,7 +5,7 @@ class OrderMiddlewares {
   static validateOrder(req, res, next) {
     try {
       if (!req.body.buyer || !req.body.status || !req.body.price
-        || !req.body.priceOffered) {
+        || !req.body.price_offered) {
         throw new Error();
       } next();
     } catch (err) {
@@ -18,7 +18,7 @@ class OrderMiddlewares {
 
   static updateOrderPrice(req, res, next) {
     try {
-      if (req.body.priceOffered && req.body.status === 'Pending') {
+      if (req.body.price_offered && req.body.status === 'Pending') {
         next();
       } throw new Error();
     } catch (err) {

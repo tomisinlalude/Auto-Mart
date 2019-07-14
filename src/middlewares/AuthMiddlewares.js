@@ -8,9 +8,9 @@
 
 class AuthMiddlewares {
   static validateName(req, res, next) {
-    const { firstName, lastName } = req.body;
+    const { first_name, last_name } = req.body;
     const regex = /\d+/;
-    if (regex.test(firstName, lastName)) {
+    if (regex.test(first_name, last_name)) {
       return res.status(400).json({
         success: false,
         message: 'You cannot use digits in your name',
@@ -19,29 +19,13 @@ class AuthMiddlewares {
     return next();
   }
 
-  static validatePhoneNumber(req, res, next) {
-    try {
-      const { phoneNumber } = req.body;
-      const phoneRegex = /[A-Za-z]/;
-      if (phoneRegex.test(phoneNumber)) {
-        throw new Error();
-      }
-      return next();
-    } catch (err) {
-      return res.status(400).json({
-        success: false,
-        message: 'Enter a valid phone number',
-      });
-    }
-  }
-
   static validatePassword(req, res, next) {
     try {
-      const { password, confirmPassword } = req.body;
+      const { password, confirm_password } = req.body;
       if (password.length < 6) {
         throw new Error();
       }
-      if (password !== confirmPassword) {
+      if (password !== confirm_password) {
         return res.status(400).json({
           success: false,
           message: "Your passwords don't match",

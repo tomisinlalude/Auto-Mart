@@ -8,7 +8,6 @@ const authRouter = Router();
 
 authRouter.post('/signup',
   AuthMiddlewares.validateName,
-  AuthMiddlewares.validatePhoneNumber,
   AuthMiddlewares.validatePassword,
   AuthMiddlewares.validateAddress,
   AuthMiddlewares.validateEmail,
