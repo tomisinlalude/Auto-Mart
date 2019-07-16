@@ -1,22 +1,10 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
+/* eslint-disable camelcase */
 
 import client from '../../config/databaseConfig';
 
 class carModel {
-  constructor(carTable) {
-    this.table = carTable;
-  }
-
-  async checkOwner(first_name, last_name) {
-    const query = {
-      text: 'SELECT * FROM Users ORDER BY id ASC;',
-      values: [first_name, last_name],
-    };
-    const { rows } = await client.query(query);
-    return rows[0];
-  }
-
   async createAd(owner, state, price, manufacturer, model, body_type, image_url) {
     const query = {
       text: `INSERT INTO Cars
@@ -58,11 +46,15 @@ class carModel {
     return rows;
   }
 
-  async unsoldCarsPriceRange() {
-    const query = {
-      text: 'SELECT * FROM Cars WHERE price=$4 AND price>=min_price AND price<=max_price;',
+  async unsoldCarsPriceRange(min_price, max_price, state, body_type, model) {
+    const queryString = {
+      text: `SELECT * FROM cars
+          WHERE status=$1 AND (price BETWEEN $2 AND $3) 
+          AND state ILIKE $4 AND
+          body_type ILIKE $5 AND manufacturer ILIKE $6;`,
+      values: ['available', min_price, max_price, state, body_type, model],
     };
-    const { rows } = await client.query(query);
+    const { rows } = await client.query(queryString);
     return rows;
   }
 
