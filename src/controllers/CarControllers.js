@@ -1,10 +1,11 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { getUserFromToken } from '../middleware/jwt';
+import { getUserFromToken } from '../middlewares/jwt';
 import carModel from '../database/models/carModel';
 
 class CarControllers {
@@ -13,7 +14,7 @@ class CarControllers {
       const {
         user_id: owner, state, status, model, manufacturer, price, body_type, image_url,
       } = req.body;
-    
+
       const car = await carModel.createAd(
         owner,
         state,
@@ -126,7 +127,7 @@ class CarControllers {
       const allCars = await carModel.allCars();
       if (allCars) {
         return res.status(200).json({
-          sstatus: 'success',
+          status: 'success',
           message: 'Viewed all cars successfully',
           data:
             allCars,
@@ -141,13 +142,6 @@ class CarControllers {
     }
   }
 
-static async getCars(req, res) {
-  const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
-  return isAdmin
-      ? getAllCars(res)
-      : getAvailableCars(req, res);
-}
-
   static async adminDeleteAdRecord(req, res) {
     const { car_id } = req.params;
     const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
@@ -158,18 +152,18 @@ static async getCars(req, res) {
       });
     }
     try {
-        const car = await carModel.findCarById(car_id);
-        if (!car) {
-          return res.status(404).json({
-            status: 'error',
-            message: 'Car ad not found',
-          });
-        }
-        await carModel.deleteCar(car_id);
-        return res.status(200).json({
-            status: 'success',
-            message: 'Car ad has been successfully deleted',
+      const car = await carModel.findCarById(car_id);
+      if (!car) {
+        return res.status(404).json({
+          status: 'error',
+          message: 'Car ad not found',
         });
+      }
+      await carModel.deleteCar(car_id);
+      return res.status(200).json({
+        status: 'success',
+        message: 'Car ad has been successfully deleted',
+      });
     } catch (err) {
       res.status(500).json({
         status: 'error',
@@ -196,11 +190,6 @@ static async getCars(req, res) {
         message: 'Success! Marked as sold',
         data: {
           car_id,
-          manufacturer,
-          model,
-          status,
-          state,
-          price,
         },
       });
     } catch (err) {
