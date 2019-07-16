@@ -14,9 +14,9 @@ class AuthControllers {
   static async createUser(req, res) {
     try {
       const {
-        first_name, last_name, email, password, confirm_password, address,
+        first_name, last_name, email, password, address,
       } = req.body;
-      const existingUser = await authModel.checkAll(email);
+      const existingUser = await authModel.checkEmail(email);
       if (existingUser) {
         return res.status(409).json({
           status: 'error',
@@ -25,7 +25,7 @@ class AuthControllers {
       }
       const passwordHash = await bcrypt.hash(password, 10);
       const user = await authModel
-        .createUser(first_name, last_name, email, passwordHash, confirm_password, address);
+        .createUser(first_name, last_name, email, passwordHash, address);
       const token = generateToken(
         {
           id: user.user_id, email,
@@ -58,7 +58,7 @@ class AuthControllers {
       const {
         email, password,
       } = req.body;
-      const returningUser = await authModel.checkAll(email);
+      const returningUser = await authModel.checkEmail(email);
       if (!returningUser) {
         return res.status(404).json({
           status: 'error',
@@ -66,7 +66,7 @@ class AuthControllers {
         });
       }
 
-      const passwordsMatch = await bcrypt.compare(password, existingUser.password_hash);
+      const passwordsMatch = await bcrypt.compare(password, returningUser.password_hash);
       if (!passwordsMatch) {
         return res.status(404).json({
           status: 'error',
@@ -104,7 +104,7 @@ class AuthControllers {
   static async resetPassword(req, res) {
     const { password } = req.body;
     try {
-      const { user_id: user_id } = await getUserFromToken(req.params.token);
+      const { user_id } = await getUserFromToken(req.params.token);
       if (!user_id) {
         return res.status(404).json({
           status: 'error',
