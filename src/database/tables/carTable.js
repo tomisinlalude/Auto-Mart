@@ -3,13 +3,15 @@
 const carTable = `
   CREATE TABLE IF NOT EXISTS Cars(
     car_id SERIAL PRIMARY KEY,
-    owner VARCHAR NOT NULL,
-    state VARCHAR NOT NULL,
-    status VARCHAR NOT NULL,
-    price NUMERIC NOT NULL,
-    manufacturer VARCHAR NOT NULL,
-    model VARCHAR NOT NULL,
-    body_type VARCHAR NOT NULL
+    owner INTEGER REFERENCES users(user_id) ON DELETE CASCADE NOT NULL,
+    state VARCHAR(10) NOT NULL,
+    status VARCHAR(10) NOT NULL,
+    price INTEGER NOT NULL,
+    manufacturer VARCHAR(30) NOT NULL,
+    model VARCHAR(30) NOT NULL,
+    body_type VARCHAR(20) NOT NULL
+    image_url VARCHAR(200) NOT NULL,
+    created_on DATE DEFAULT NOW()
   );
 `;
 
