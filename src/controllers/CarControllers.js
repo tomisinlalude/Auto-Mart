@@ -4,25 +4,16 @@
 
 import regeneratorRuntime from 'regenerator-runtime';
 
-import { Cars } from '../database/mockData/Cars';
+import { getUserFromToken } from '../middleware/jwt';
 import carModel from '../database/models/carModel';
-
-const { insertCar } = Cars;
 
 class CarControllers {
   static async createAd(req, res) {
     try {
       const {
-        owner, state, status, model, manufacturer, price, body_type, image_url,
+        user_id: owner, state, status, model, manufacturer, price, body_type, image_url,
       } = req.body;
-
-      const { checkOwner } = await carModel;
-      if (!checkOwner) {
-        return res.status(400).json({
-          success: false,
-          message: 'User does not have an account',
-        });
-      }
+    
       const car = await carModel.createAd(
         owner,
         state,
@@ -33,15 +24,14 @@ class CarControllers {
         body_type,
         image_url,
       );
-      insertCar(car);
       res.status(201).json({
-        success: true,
+        status: 'success',
         message: 'Advert post successfully created',
         data: car,
       });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Post Advert not successful',
         err,
       });
@@ -55,14 +45,14 @@ class CarControllers {
       const updatedPrice = await carModel.updateCarPrice(car_id, owner, new_price);
       if (updatedPrice) {
         return res.status(200).json({
-          success: true,
+          status: 'success',
           message: 'Price of car successfully updated',
           data: updatedPrice,
         });
       }
     } catch (err) {
       return res.status(500).json({
-        success: 'false',
+        status: 'error',
         message: 'Not successful',
       });
     }
@@ -74,18 +64,18 @@ class CarControllers {
       const specificAd = await carModel.selectSpecificCar(car_id);
       if (!specificAd) {
         return res.status(404).json({
-          success: false,
+          status: 'error',
           message: 'This car ad is not found',
         });
       }
       return res.status(200).json({
-        success: true,
+        status: 'success',
         message: 'Viewing car ad is successful',
         data: specificAd,
       });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Viewing car ad is not successful',
         err,
       });
@@ -97,14 +87,14 @@ class CarControllers {
       const unsold = await carModel.unsoldCarsOnly();
       if (unsold) {
         return res.status(200).json({
-          success: true,
+          status: 'success',
           message: 'Viewing unsold cars',
           data: unsold,
         });
       }
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Not successful',
         err,
       });
@@ -136,7 +126,7 @@ class CarControllers {
       const allCars = await carModel.allCars();
       if (allCars) {
         return res.status(200).json({
-          success: true,
+          sstatus: 'success',
           message: 'Viewed all cars successfully',
           data:
             allCars,
@@ -144,30 +134,45 @@ class CarControllers {
       }
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Not successful',
         err,
       });
     }
   }
 
+static async getCars(req, res) {
+  const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
+  return isAdmin
+      ? getAllCars(res)
+      : getAvailableCars(req, res);
+}
+
   static async adminDeleteAdRecord(req, res) {
-    try {
-      const isAdmin = false;
-      const deleteAd = await carModel.deleteAd();
-      if (!isAdmin && deleteAd) {
-        return res.status(200).json({
-          success: true,
-          message: 'Success! This ad has been deleted',
-        });
-      }
-      return res.status(404).json({
-        success: false,
-        message: 'Car ad not found',
+    const { car_id } = req.params;
+    const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
+    if (!isAdmin) {
+      res.status(403).json({
+        status: 'error',
+        message: 'You do not have access to this feature',
       });
+    }
+    try {
+        const car = await carModel.findCarById(car_id);
+        if (!car) {
+          return res.status(404).json({
+            status: 'error',
+            message: 'Car ad not found',
+          });
+        }
+        await carModel.deleteCar(car_id);
+        return res.status(200).json({
+            status: 'success',
+            message: 'Car ad has been successfully deleted',
+        });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Not successful',
         err,
       });
@@ -187,7 +192,7 @@ class CarControllers {
         });
       }
       return res.status(200).json({
-        success: true,
+        status: 'success',
         message: 'Success! Marked as sold',
         data: {
           car_id,
@@ -200,7 +205,7 @@ class CarControllers {
       });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'Not successful',
         err,
       });
