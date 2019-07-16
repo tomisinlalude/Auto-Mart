@@ -5,8 +5,9 @@
 /* eslint-disable consistent-return */
 
 import regeneratorRuntime from 'regenerator-runtime';
+import bcrypt from 'bcrypt';
 
-import { generateToken } from '../middlewares/jwt';
+import { generateToken, getUserFromToken } from '../middlewares/jwt';
 import authModel from '../database/models/authModel';
 
 class AuthControllers {
@@ -18,22 +19,23 @@ class AuthControllers {
       const existingUser = await authModel.checkAll(email);
       if (existingUser) {
         return res.status(409).json({
-          success: false,
+          status: 'error',
           message: 'This email has been used. Kindly login instead.',
         });
       }
+      const passwordHash = await bcrypt.hash(password, 10);
       const user = await authModel
-        .createUser(first_name, last_name, email, password, confirm_password, address);
+        .createUser(first_name, last_name, email, passwordHash, confirm_password, address);
       const token = generateToken(
         {
-          id: user.id, email,
+          id: user.user_id, email,
         },
       );
       res.status(201).json({
-        success: true,
+        status: 'success',
         message: 'User has been created',
         data: {
-          id: user.id,
+          id: user.user_id,
           token,
           first_name,
           last_name,
@@ -44,7 +46,7 @@ class AuthControllers {
       });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'User creation failed',
         err,
       });
@@ -59,13 +61,15 @@ class AuthControllers {
       const returningUser = await authModel.checkAll(email);
       if (!returningUser) {
         return res.status(404).json({
-          success: false,
+          status: 'error',
           message: 'User does not exist. Sign up',
         });
       }
-      if (returningUser.password !== req.body.password) {
-        return res.status(400).json({
-          success: false,
+
+      const passwordsMatch = await bcrypt.compare(password, existingUser.password_hash);
+      if (!passwordsMatch) {
+        return res.status(404).json({
+          status: 'error',
           message: 'Incorrect password',
         });
       }
@@ -77,17 +81,20 @@ class AuthControllers {
         },
       );
       return res.status(200).json({
-        success: true,
+        status: 'success',
         message: 'User has been logged in',
         data: {
           token,
+          id,
+          first_name,
+          last_name,
           email,
           password,
         },
       });
     } catch (err) {
       res.status(500).json({
-        success: false,
+        status: 'error',
         message: 'User login failed',
         err,
       });
@@ -97,16 +104,17 @@ class AuthControllers {
   static async resetPassword(req, res) {
     const { password } = req.body;
     try {
-      const { user_id } = await authModel.checkToken(req.header.token);
+      const { user_id: user_id } = await getUserFromToken(req.params.token);
       if (!user_id) {
         return res.status(404).json({
-          success: false,
+          status: 'error',
           message: 'User does not exist',
         });
       }
-      await authModel.resetPassword(user_id, password);
+      const passwordHash = await bcrypt.hash(password, 10);
+      await authModel.resetPassword(user_id, passwordHash);
       return res.status(200).json({
-        success: true,
+        status: 'success',
         message: 'Password has been reset',
       });
     } catch (err) {
