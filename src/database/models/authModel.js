@@ -2,7 +2,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable camelcase */
 
-import client from '../../config/databaseConfig';
+import pool from '../../config/databaseConfig';
 
 /**
  * Perform CRUD operations on database
@@ -14,7 +14,7 @@ class authModel {
       text: 'SELECT * FROM Users ORDER BY id ASC;',
       values: [email],
     };
-    const { rows } = await client.query(query);
+    const { rows } = await pool.query(query);
     return rows[0];
   }
 
@@ -27,7 +27,7 @@ class authModel {
       values: [first_name, last_name, email, passwordHash, address],
     };
 
-    const { rows } = await client.query(query);
+    const { rows } = await pool.query(query);
     return rows[0];
   }
 
@@ -37,7 +37,7 @@ class authModel {
             WHERE user_id = $1; `,
       values: [user_id, passwordHash],
     };
-    const { rows } = await client.query(query);
+    const { rows } = await pool.query(query);
     return rows;
   }
 }

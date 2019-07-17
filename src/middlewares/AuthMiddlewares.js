@@ -1,11 +1,11 @@
 /* eslint-disable linebreak-style */
-
+​
 /**
  * @class UserAuth
  * @description Contains methods for validating each user related endpoint
  * @exports UserAuth
  */
-
+​
 class AuthMiddlewares {
   static validateName(req, res, next) {
     const { first_name, last_name } = req.body;
@@ -18,7 +18,7 @@ class AuthMiddlewares {
     }
     return next();
   }
-
+​
   static validatePassword(req, res, next) {
     try {
       const { password, confirm_password } = req.body;
@@ -39,7 +39,7 @@ class AuthMiddlewares {
       });
     }
   }
-
+​
   static validateAddress(req, res, next) {
     try {
       const { address } = req.body;
@@ -54,11 +54,11 @@ class AuthMiddlewares {
       });
     }
   }
-
+​
   static validateEmail(req, res, next) {
     try {
       const { email } = req.body;
-      const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      const emailRegex = /^[a-zA-Z0-9.!#$%&’+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/;
       if (!emailRegex.test(email)) {
         throw new Error();
       }
@@ -70,6 +70,30 @@ class AuthMiddlewares {
       });
     }
   }
+​
+  static signUp(req, res, next){
+    const {first_name, last_name, email, password, address} = req.body;
+​
+    if (!first_name || !last_name || !email || !password || !address){
+      return res.status(400).json({
+        error: 'Incomplete data',
+      });
+    }
+​
+    return next();
+  }
+​
+  static signIn(req, res, next){
+    const {email, password} = req.body;
+​
+    if (!email || !password){
+      return res.status(400).json({
+        error: 'Incomplete data',
+      });
+    }
+​
+    return next();
+  }
 }
-
+​
 export default AuthMiddlewares;

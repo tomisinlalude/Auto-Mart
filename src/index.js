@@ -10,7 +10,7 @@ import { cloudinaryConfig } from './config/cloudinaryConfig';
 import router from './routes';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3300;
 dotenv.config();
 
 app.use(cors({
@@ -25,6 +25,6 @@ app.use(logger('dev'));
 app.use('/', cloudinaryConfig);
 app.use('/api/v1/', router);
 
-app.listen(port, () => `server running on port ${port}`);
+app.listen(port, () => console.log(`server running on port ${port}`));
 
 export default app;
