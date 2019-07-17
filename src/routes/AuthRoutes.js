@@ -7,13 +7,11 @@ import AuthControllers from '../controllers/AuthControllers';
 const authRouter = Router();
 
 authRouter.post('/signup',
-  AuthMiddlewares.validateName,
-  AuthMiddlewares.validatePassword,
-  AuthMiddlewares.validateAddress,
-  AuthMiddlewares.validateEmail,
+  AuthMiddlewares.signUp,
   AuthControllers.createUser);
 
 authRouter.post('/signin',
+  AuthMiddlewares.signIn,
   AuthControllers.userLogin);
 
 export default authRouter;
