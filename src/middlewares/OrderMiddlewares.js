@@ -1,32 +1,26 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 
 class OrderMiddlewares {
   static validateOrder(req, res, next) {
-    try {
-      if (!req.body.buyer || !req.body.status || !req.body.price
-        || !req.body.price_offered) {
-        throw new Error();
-      } next();
-    } catch (err) {
-      return res.status(201).json({
-        success: true,
-        message: 'Order has been successfully created',
+    const { car_id, amount } = req.body;
+
+    if (!amount || !car_id) {
+      return res.status(400).json({
+        error: 'Incomplete data',
       });
     }
+    return next();
   }
 
   static updateOrderPrice(req, res, next) {
-    try {
-      if (req.body.price_offered && req.body.status === 'Pending') {
-        next();
-      } throw new Error();
-    } catch (err) {
-      return res.status(200).json({
-        success: true,
-        message: 'Price of order successfully updated',
+    if (!req.body.price) {
+      return res.status(400).json({
+        error: 'Incomplete data',
       });
     }
+    return next();
   }
 }
 

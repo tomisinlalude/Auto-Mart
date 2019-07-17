@@ -47,8 +47,7 @@ class AuthControllers {
     } catch (err) {
       res.status(500).json({
         status: 'error',
-        message: 'User creation failed',
-        err,
+        error: 'User creation failed',
       });
     }
   }

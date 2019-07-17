@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
+/* eslint-disable prefer-const */
 
 import regeneratorRuntime from 'regenerator-runtime';
 
@@ -11,12 +12,16 @@ import carModel from '../database/models/carModel';
 class CarControllers {
   static async createAd(req, res) {
     try {
-      const {
-        user_id: owner, state, status, model, manufacturer, price, body_type, image_url,
+      let {
+        state, status, model, manufacturer, price, body_type, image_url,
       } = req.body;
 
+      const { id } = req.user;
+      if (!image_url) {
+        image_url = '';
+      }
       const car = await carModel.createAd(
-        owner,
+        id,
         state,
         status,
         price,
@@ -40,10 +45,19 @@ class CarControllers {
   }
 
   static async updateCarPrice(req, res) {
-    const { user_id: owner, new_price } = req.body;
-    const { car_id } = req.params;
+    const { price } = req.body;
+    const { id } = req.params;
     try {
-      const updatedPrice = await carModel.updateCarPrice(car_id, owner, new_price);
+      const findCar = await carModel.selectSpecificCar(id);
+
+      if (findCar === undefined) {
+        return res.status(404).json({
+          status: 'error',
+          error: 'Not found',
+        });
+      }
+
+      const updatedPrice = await carModel.updateCarPrice(id, price);
       if (updatedPrice) {
         return res.status(200).json({
           status: 'success',
@@ -54,19 +68,19 @@ class CarControllers {
     } catch (err) {
       return res.status(500).json({
         status: 'error',
-        message: 'Not successful',
+        error: 'Not successful',
       });
     }
   }
 
   static async viewSpecificAd(req, res) {
-    const { car_id } = req.params;
+    const { id } = req.params;
     try {
-      const specificAd = await carModel.selectSpecificCar(car_id);
-      if (!specificAd) {
+      const specificAd = await carModel.selectSpecificCar(id);
+      if (specificAd === undefined) {
         return res.status(404).json({
           status: 'error',
-          message: 'This car ad is not found',
+          error: 'This car ad is not found',
         });
       }
       return res.status(200).json({
@@ -77,7 +91,7 @@ class CarControllers {
     } catch (err) {
       res.status(500).json({
         status: 'error',
-        message: 'Viewing car ad is not successful',
+        error: 'Viewing car ad is not successful',
         err,
       });
     }
@@ -143,23 +157,23 @@ class CarControllers {
   }
 
   static async adminDeleteAdRecord(req, res) {
-    const { car_id } = req.params;
-    const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
-    if (!isAdmin) {
-      res.status(403).json({
-        status: 'error',
-        message: 'You do not have access to this feature',
-      });
-    }
+    const { id } = req.params;
+    // const { is_admin: isAdmin } = await getUserFromToken(req.headers.authorization);
+    // if (!isAdmin) {
+    //   res.status(403).json({
+    //     status: 'error',
+    //     message: 'You do not have access to this feature',
+    //   });
+    // }
     try {
-      const car = await carModel.findCarById(car_id);
-      if (!car) {
+      const car = await carModel.selectSpecificCar(id);
+      if (car === undefined) {
         return res.status(404).json({
           status: 'error',
-          message: 'Car ad not found',
+          error: 'Car ad not found',
         });
       }
-      await carModel.deleteCar(car_id);
+      await carModel.deleteAd(id);
       return res.status(200).json({
         status: 'success',
         message: 'Car ad has been successfully deleted',
@@ -174,29 +188,25 @@ class CarControllers {
   }
 
   static async markCarAsSold(req, res) {
-    const { user_id } = req.body;
-    const { car_id } = req.params;
+    const { id } = req.params;
     try {
-      const id = Number(req.params.id);
-      const checkStatus = await carModel.markAdAsSold;
-      if (checkStatus === 'sold') {
+      const status = 'sold';
+      const checkStatus = await carModel.markAdAsSold(id, status);
+      if (checkStatus === undefined) {
         return res.status(404).json({
           success: false,
-          message: 'This car has been sold',
+          message: 'Car does not exist',
         });
       }
       return res.status(200).json({
         status: 'success',
         message: 'Success! Marked as sold',
-        data: {
-          car_id,
-        },
+        data: checkStatus,
       });
     } catch (err) {
       res.status(500).json({
         status: 'error',
-        message: 'Not successful',
-        err,
+        error: 'Not successful',
       });
     }
   }

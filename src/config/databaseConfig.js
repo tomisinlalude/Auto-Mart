@@ -3,22 +3,22 @@
 /* eslint-disable consistent-return */
 
 import dotenv from 'dotenv';
-import { Client } from 'pg';
+import pg from 'pg';
 
 dotenv.config();
 
-const connectionString = process.env.DB_URL;
+const connectionString = process.env.DATABASE_URL;
 
 const config = () => {
   const env = process.env.NODE_ENV;
 
   if (env === 'dev') {
     return {
-      DATABASE: process.env.DEV_DB,
-      DATABASE_PASSWORD: process.env.DB_PASSWORD,
-      DATABASE_USERNAME: process.env.DB_USERNAME,
-      PORT: process.env.PORT,
-      ENV: 'development',
+      database: process.env.DEV_DB,
+      password: process.env.DB_PASSWORD,
+      user: process.env.DB_USERNAME,
+      host: process.env.DB_PORT,
+      port: 5432,
     };
   }
 
@@ -43,10 +43,12 @@ const config = () => {
   }
 };
 
-const client = new Client({
+const pool = new pg.Pool({
   connectionString,
 });
 
-client.connect();
+pool.on('connect', () => {
+  console.log('connected to the Database');
+});
 
-export default client;
+export default pool;

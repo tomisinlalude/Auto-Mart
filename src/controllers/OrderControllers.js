@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 
 import orderModel from '../database/models/orderModel';
 
@@ -7,16 +8,12 @@ class OrderControllers {
   static async createOrder(req, res) {
     try {
       const {
-        buyer, car_id, status, price, price_offered,
+        car_id, amount,
       } = req.body;
-      req.body.buyer = await orderModel.checkBuyer;
-      if (!req.body.buyer) {
-        return res.status(400).json({
-          success: false,
-          message: 'User does not have an account',
-        });
-      }
-      const order = await orderModel.createOrder(buyer, car_id, status, price, price_offered);
+
+      const { id } = req.user;
+
+      const order = await orderModel.createOrder(id, car_id, amount);
       return res.status(201).json({
         success: true,
         message: 'Order has been created',
@@ -32,19 +29,31 @@ class OrderControllers {
   }
 
   static async updateOrderPrice(req, res) {
+    const { id } = req.params;
+    const { price } = req.body;
+
     try {
-      const updatePrice = await orderModel.updateOrderPrice;
+      const findOrder = await orderModel.findOrder(id);
+
+      if (findOrder === undefined) {
+        return res.status(404).json({
+          success: 'false',
+          error: 'Not found',
+        });
+      }
+
+      const updatePrice = await orderModel.updateOrderPrice(id, price);
       if (updatePrice) {
         res.status(200).json({
-          success: true,
+          status: 'successful',
           message: 'Price of order successfully updated',
+          data: updatePrice,
         });
       }
     } catch (err) {
       return res.status(500).json({
         success: 'false',
         message: 'Not successful',
-        err,
       });
     }
   }
